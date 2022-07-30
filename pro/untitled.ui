@@ -6,21 +6,42 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>616</width>
-    <height>532</height>
+    <width>972</width>
+    <height>711</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,7">
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <item>
        <widget class="QFrame" name="frame_3">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -34,8 +55,14 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>40</height>
+          <height>100</height>
          </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -43,10 +70,227 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,40,1,1">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>../res/logo-1.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_10">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="mouseTracking">
+              <bool>false</bool>
+             </property>
+             <property name="toolTipDuration">
+              <number>-1</number>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>../res/胡歌2.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1,5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item>
+                <widget class="QPushButton" name="pushButton_6">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../res/窗口最小化.png</normaloff>../res/窗口最小化.png</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_7">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../res/窗口最大化.png</normaloff>../res/窗口最大化.png</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_8">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../res/退出.png</normaloff>../res/退出.png</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_11">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
         <property name="topMargin">
          <number>0</number>
         </property>
@@ -54,7 +298,7 @@
          <widget class="QFrame" name="frame">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>1</horstretch>
+            <horstretch>2</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
@@ -66,7 +310,7 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>100</width>
+            <width>125</width>
             <height>16777215</height>
            </size>
           </property>
@@ -77,47 +321,198 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QPushButton" name="pushButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+               </property>
                <property name="text">
                 <string>今日任务</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../res/sun.png</normaloff>../res/sun.png</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+               </property>
                <property name="text">
                 <string>日程安排</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../res/日历.png</normaloff>../res/日历.png</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+               </property>
                <property name="text">
                 <string>任务检索</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../res/搜索类目-fill.png</normaloff>../res/搜索类目-fill.png</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+               </property>
                <property name="text">
                 <string>历史数据</string>
                </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_6">
-               <property name="text">
-                <string>PushButton</string>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../res/历史数据.png</normaloff>../res/历史数据.png</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+               </property>
                <property name="text">
-                <string>PushButton</string>
+                <string>更多功能</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../res/更多.png</normaloff>../res/更多.png</iconset>
                </property>
               </widget>
              </item>
@@ -130,7 +525,7 @@
          <widget class="QFrame" name="frame_2">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>5</horstretch>
+            <horstretch>3</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
@@ -141,15 +536,54 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetNoConstraint</enum>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(255, 255, 255)</string>
+             </property>
+             <property name="lineWidth">
+              <number>0</number>
+             </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="page">
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetNoConstraint</enum>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QFrame" name="frame_4">
                    <property name="minimumSize">
@@ -170,16 +604,69 @@
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,6">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
                     <item>
-                     <widget class="QToolButton" name="toolButton">
+                     <widget class="QPushButton" name="pushButton">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+	border: none;
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+	border: none;
+}
+</string>
+                      </property>
                       <property name="text">
-                       <string>添加任务</string>
+                       <string>添加</string>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>../res/添加任务.png</normaloff>../res/添加任务.png</iconset>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit"/>
+                     <widget class="QLineEdit" name="lineEdit">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: rgb(248, 248, 248);</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -193,8 +680,27 @@
                     <enum>QFrame::Raised</enum>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
                     <item>
-                     <widget class="QListWidget" name="listWidget"/>
+                     <widget class="QListWidget" name="listWidget">
+                      <property name="styleSheet">
+                       <string notr="true">border:none</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -203,6 +709,7 @@
                </item>
               </layout>
              </widget>
+             <widget class="QWidget" name="page_5"/>
              <widget class="QWidget" name="page_2">
               <layout class="QGridLayout" name="gridLayout">
                <item row="0" column="1">
@@ -295,7 +802,6 @@
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="page_3"/>
              <widget class="QWidget" name="page_4"/>
             </widget>
            </item>
@@ -313,13 +819,81 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>616</width>
-     <height>22</height>
+     <width>972</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
- <connections/>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>listWidget</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>pushButton_8</tabstop>
+  <tabstop>listWidget_5</tabstop>
+  <tabstop>listWidget_2</tabstop>
+  <tabstop>listWidget_4</tabstop>
+  <tabstop>listWidget_3</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../res/new.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>942</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>826</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showMinimized()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>729</x>
+     <y>-17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showMaximized()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>919</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>607</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
