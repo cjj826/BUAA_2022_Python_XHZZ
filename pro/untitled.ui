@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>858</width>
+    <width>979</width>
     <height>840</height>
    </rect>
   </property>
@@ -86,9 +86,12 @@
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>100</width>
                <height>100</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -103,12 +106,104 @@
            </item>
            <item>
             <widget class="QFrame" name="frame_10">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(245, 245, 245);</string>
+             </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
+             <widget class="QLabel" name="label_7">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>0</y>
+                <width>60</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>../res/13_icon.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_8">
+              <property name="geometry">
+               <rect>
+                <x>80</x>
+                <y>0</y>
+                <width>60</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>../res/多云.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_9">
+              <property name="geometry">
+               <rect>
+                <x>150</x>
+                <y>0</y>
+                <width>60</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>../res/晴（夜间）.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_10">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>40</y>
+                <width>60</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>../res/日历-title.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_11">
+              <property name="geometry">
+               <rect>
+                <x>80</x>
+                <y>48</y>
+                <width>300</width>
+                <height>15</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>2022-07-30 16:55:40 星期日</string>
+              </property>
+             </widget>
             </widget>
            </item>
            <item>
@@ -130,7 +225,7 @@
              </property>
              <property name="maximumSize">
               <size>
-               <width>300</width>
+               <width>80</width>
                <height>100</height>
               </size>
              </property>
@@ -268,6 +363,9 @@ QPushButton:pressed{
              </item>
              <item>
               <widget class="QFrame" name="frame_11">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(245, 245, 245);</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -663,6 +761,9 @@ QPushButton:pressed{
                         <verstretch>0</verstretch>
                        </sizepolicy>
                       </property>
+                      <property name="toolTip">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">background-color: rgb(248, 248, 248);</string>
                       </property>
@@ -819,7 +920,7 @@ QPushButton:pressed{
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>858</width>
+     <width>979</width>
      <height>26</height>
     </rect>
    </property>

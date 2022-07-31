@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QSlider, QApplication,
                              QHBoxLayout, QVBoxLayout, QMainWindow)
-from PyQt5.QtCore import QObject, Qt, pyqtSignal
+from PyQt5.QtCore import QObject, Qt, pyqtSignal, QTimer, QDateTime
 from PyQt5.QtGui import QPainter, QFont, QColor, QPen
 
 import sys
@@ -18,6 +18,16 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.pushButton_3.clicked.connect(self.display_page3)
         self.pushButton_4.clicked.connect(self.display_page4)
         # self.pushButton_5.clicked.connect(self.display_page5)
+        self.label_11.setText("2022-07-30 16:55:40 星期日")
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.showtime)  # 这个通过调用槽函数来刷新时间
+        self.timer.start(1000)  # 每隔一秒刷新一次，这里设置为1000ms
+
+    def showtime(self):
+
+        time=QDateTime.currentDateTime()#获取当前时间
+        timedisplay=time.toString("yyyy-MM-dd hh:mm:ss dddd")#格式化一下时间
+        self.label_11.setText(timedisplay)
 
     def display_page1(self):
         self.stackedWidget.setCurrentIndex(0)
