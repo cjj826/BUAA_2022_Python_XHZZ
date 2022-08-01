@@ -5,12 +5,14 @@ from PyQt5.QtGui import QPainter, QFont, QColor, QPen
 
 import sys
 import untitled
+from inputDialog import InputDialog
 
 class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def __init__(self):
         super(masterWindow, self).__init__()
         self.setupUi(self)
         self.stackedWidget.setCurrentIndex(0)
+        self.INPUT = InputDialog()
 
         #进行信号与槽的链接按钮
         self.pushButton.clicked.connect(self.display_page1)
@@ -22,9 +24,17 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.timer = QTimer()
         self.timer.timeout.connect(self.showtime)  # 这个通过调用槽函数来刷新时间
         self.timer.start(1000)  # 每隔一秒刷新一次，这里设置为1000ms
+        self.lineEdit.setPlaceholderText("添加任务，按回车创建")
+        self.lineEdit.editingFinished.connect(self.addAssignment)
+
+    def addAssignment(self):
+        self.INPUT.exec_()
+        if self.INPUT.set == True:
+            l = [self.INPUT.titleLable.text(), self.INPUT.contentLable.text(),
+                 self.INPUT.dateLable.text(), self.INPUT.importanceLable.text()]
+            print(l)
 
     def showtime(self):
-
         time=QDateTime.currentDateTime()#获取当前时间
         timedisplay=time.toString("yyyy-MM-dd hh:mm:ss dddd")#格式化一下时间
         self.label_11.setText(timedisplay)
