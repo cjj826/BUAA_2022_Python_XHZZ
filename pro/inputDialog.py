@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QInputDialog, QGri
 from PyQt5.uic.properties import QtCore
 
 from DateTime import DateTimeEditDemo
+from mysql.MySql import MySql
+from mytask import Mytask
 
 class InputDialog(QDialog):
     def __init__(self):
@@ -22,13 +24,13 @@ class InputDialog(QDialog):
         label3=QLabel("截止日期:")
         label4=QLabel("重要性:")
 
-        self.titleLable = QLabel("GUI开发")
+        self.titleLable = QLabel()
         self.titleLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
-        self.contentLable = QLabel("pyqt5")
+        self.contentLable = QLabel()
         self.contentLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
-        self.dateLable = QLabel("2022-08-15 23:55")
+        self.dateLable = QLabel(" "*len('yyyy-MM-dd HH:mm:ss'))
         self.dateLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
-        self.importanceLable = QLabel("重要")
+        self.importanceLable = QLabel()
         self.importanceLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
 
         titleButton=QPushButton("编辑")
@@ -65,13 +67,26 @@ class InputDialog(QDialog):
 
         self.setLayout(mainLayout)
 
+    def setUserName(self, string):
+        self.userName = string
+
+    def setTitleAuto(self, string):
+        self.titleLable.setText(string)
+
     def exit__(self):
         self.set = False
         self.close()
 
     def confirm(self):
         self.set = True
+        task = Mytask(userName=self.userName,
+                      taskName = self.titleLable.text(),
+                      content= self.contentLable.text(),
+                      deadline=self.dateLable.text(),
+                      importance=self.importanceLable.text())
+        task.save()
         self.close()
+
 
     def setTitle(self):
         title,ok = QInputDialog.getText(self,"任务标题","输入任务标题:",
@@ -93,7 +108,7 @@ class InputDialog(QDialog):
             self.importanceLable.setText(style)
 
     def setContent(self):
-        content,ok = QInputDialog.getMultiLineText(self,"内容描述","请输入内容描述：","pyqt5")
+        content,ok = QInputDialog.getMultiLineText(self,"内容描述","请输入内容描述：")
         if ok :
             self.contentLable.setText(content)
 

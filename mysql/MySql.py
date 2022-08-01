@@ -1,3 +1,5 @@
+import re
+
 import pymysql
 
 
@@ -10,7 +12,7 @@ class MySql():
         try:
             self.con = pymysql.connect(host='localhost',
                                       user='root',
-                                      password='888718')
+                                      password='root')
             self.con.autocommit(1)
             self.cursor = self.con.cursor()
         except:
@@ -26,6 +28,27 @@ class MySql():
                 )''')
         else :
             self.con.select_db('scheduler')
+
+    def isExistTable(self, tableName):
+        sql = "select * from %s" % tableName
+        result = self.executeSql(sql)
+        if result is None:
+            return False
+        else:
+            return True
+
+    def createTable(self, tableName, attrdict, constraint = 'id INT PRIMARY KEY auto_increment'):
+        if self.isExistTable(tableName):
+            print("%s exists" % tableName)
+            return
+        sql = 'create table if not exists %s (' % tableName
+        if constraint is not None:
+            sql += constraint + ','
+        for attr, atype in attrdict.items():
+            sql += attr +' '+ atype + ','
+        sql = sql[:-1] + ')'
+        print('createTable:' + sql)
+        self.executeCommit(sql)
 
     def insert(self, table, params):
         """
@@ -60,8 +83,8 @@ class MySql():
 
     def executeSql(self, sql):
         """
-        Executes a sql statement that queries something like *SELECT*
-        :param sql: a sql statement
+        Executes a mysql statement that queries something like *SELECT*
+        :param sql: a mysql statement
         :return: a result set for a read operation
         """
         try:
@@ -99,4 +122,9 @@ class MySql():
 
 if __name__ == '__main__':
     mysql = MySql(init=True)
+    attrs = ["taskName", "content", "deadline", "importance"]
+    dic = {}
+    for a in attrs:
+        dic[a] = "VARCHAR (255)"
+    mysql.createTable()
     mysql.closeDataBase()

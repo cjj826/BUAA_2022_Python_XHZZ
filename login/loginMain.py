@@ -1,10 +1,11 @@
 from PyQt5.QtCore import QTimer
 from pro.window1 import masterWindow
-from sql.MySql import MySql
+from mysql.MySql import MySql
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore
 from login.loginMainWindow import Ui_MainWindow
+from mytask import Mytask
 
 
 class loginWorkStation(Ui_MainWindow):
@@ -31,12 +32,14 @@ class loginWorkStation(Ui_MainWindow):
         print("login success")
         self.main_window = masterWindow()
         self.main_window.show()
+        self.main_window.setUser(self.userName)
         self.loginwindow.close()
         pass
 
     def tryLogin(self):
         username = str(self.lineEdit.text())
         password = str(self.lineEdit_2.text())
+        self.userName = username
         if self.isEmpty(username):
             self.showLabel(self.label_5)
             self.lineEdit.clear()
@@ -82,10 +85,14 @@ class loginWorkStation(Ui_MainWindow):
                 return
         dic = {"username":username, "password":password}
         mysql.insert("sc_user", dic)
-        mysql.closeDataBase()
+        #创建该用户的数据库
+        dic = Mytask.getAttr()
+        mysql.createTable(tableName = 'user_'+username, attrdict= dic)
         # here
         self.showLabel(self.label_11)
         self.change2login()
+        mysql.closeDataBase()
+
 
     def isEmpty(self, string):
         return string is None or string.strip() == ''
