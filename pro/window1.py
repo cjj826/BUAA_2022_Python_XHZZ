@@ -76,7 +76,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
             item = self.listWidget.takeItem(0)
             del item
         if tasks is None:
-            return 
+            return
         for task in tasks:
             item = CustomListWidgetItem(task)
             self.listWidget.addItem(item)

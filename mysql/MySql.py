@@ -38,9 +38,6 @@ class MySql():
             return True
 
     def createTable(self, tableName, attrdict, constraint = 'id INT PRIMARY KEY auto_increment'):
-        if self.isExistTable(tableName):
-            print("%s exists" % tableName)
-            return
         sql = 'create table if not exists %s (' % tableName
         if constraint is not None:
             sql += constraint + ','
