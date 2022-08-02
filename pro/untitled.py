@@ -55,7 +55,7 @@ class Ui_MainWindow(object):
         self.label_5.setMaximumSize(QtCore.QSize(100, 100))
         self.label_5.setStyleSheet("")
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("../res/logo-1.png"))
+        self.label_5.setPixmap(QtGui.QPixmap(r"D:\zhang_kg\BUAA_undergraduate\2Sophomore\BUAA_Python\731work\missionlist_py\res\logo-1.png"))
         self.label_5.setScaledContents(True)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_9.addWidget(self.label_5)
@@ -79,13 +79,13 @@ class Ui_MainWindow(object):
         self.label_9 = QtWidgets.QLabel(self.frame_10)
         self.label_9.setGeometry(QtCore.QRect(150, 0, 60, 30))
         self.label_9.setText("")
-        self.label_9.setPixmap(QtGui.QPixmap("../res/晴（夜间）.png"))
+        self.label_9.setPixmap(QtGui.QPixmap(r"..\res\晴（夜间）.png"))
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.frame_10)
         self.label_10.setGeometry(QtCore.QRect(10, 40, 60, 30))
         self.label_10.setText("")
-        self.label_10.setPixmap(QtGui.QPixmap("../res/日历-title.png"))
+        self.label_10.setPixmap(QtGui.QPixmap(r"..\res\日历-title.png"))
         self.label_10.setScaledContents(True)
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(self.frame_10)
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
         self.label_6.setMouseTracking(False)
         self.label_6.setToolTipDuration(-1)
         self.label_6.setText("")
-        self.label_6.setPixmap(QtGui.QPixmap("../res/胡歌2.png"))
+        self.label_6.setPixmap(QtGui.QPixmap(r"..\res\胡歌2.png"))
         self.label_6.setScaledContents(True)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout_9.addWidget(self.label_6)
@@ -120,24 +120,24 @@ class Ui_MainWindow(object):
         self.pushButton_6.setSizePolicy(sizePolicy)
         self.pushButton_6.setMaximumSize(QtCore.QSize(16777215, 100))
         self.pushButton_6.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "")
         self.pushButton_6.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../res/窗口最小化.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(r"..\res\窗口最小化.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_6.setIcon(icon)
         self.pushButton_6.setObjectName("pushButton_6")
         self.horizontalLayout_8.addWidget(self.pushButton_6)
@@ -148,20 +148,20 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.pushButton_7.sizePolicy().hasHeightForWidth())
         self.pushButton_7.setSizePolicy(sizePolicy)
         self.pushButton_7.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}")
         self.pushButton_7.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("../res/窗口最大化.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -175,20 +175,20 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.pushButton_8.sizePolicy().hasHeightForWidth())
         self.pushButton_8.setSizePolicy(sizePolicy)
         self.pushButton_8.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}")
         self.pushButton_8.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("../res/退出.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -241,21 +241,21 @@ class Ui_MainWindow(object):
         self.pushButton.setSizePolicy(sizePolicy)
         self.pushButton.setMaximumSize(QtCore.QSize(120, 60))
         self.pushButton.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"")
+                                      "    font-family:微软雅黑;\n"
+                                      "    background-color: rgb(248, 248, 248);\n"
+                                      "    border: none;\n"
+                                      "}\n"
+                                      "QPushButton:hover{\n"
+                                      "    font-family:微软雅黑;\n"
+                                      "    background-color: rgb(233, 237, 238);\n"
+                                      "    border: none;\n"
+                                      "}\n"
+                                      "QPushButton:pressed{\n"
+                                      "    font-family:微软雅黑;\n"
+                                      "    background-color: rgb(233, 237, 238);\n"
+                                      "    border: none;\n"
+                                      "}\n"
+                                      "")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("../res/sun.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon3)
@@ -269,21 +269,21 @@ class Ui_MainWindow(object):
         self.pushButton_2.setSizePolicy(sizePolicy)
         self.pushButton_2.setMaximumSize(QtCore.QSize(120, 60))
         self.pushButton_2.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("../res/日历.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon4)
@@ -297,21 +297,21 @@ class Ui_MainWindow(object):
         self.pushButton_3.setSizePolicy(sizePolicy)
         self.pushButton_3.setMaximumSize(QtCore.QSize(120, 60))
         self.pushButton_3.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("../res/搜索类目-fill.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon5)
@@ -325,21 +325,21 @@ class Ui_MainWindow(object):
         self.pushButton_4.setSizePolicy(sizePolicy)
         self.pushButton_4.setMaximumSize(QtCore.QSize(120, 60))
         self.pushButton_4.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap("../res/历史数据.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_4.setIcon(icon6)
@@ -353,21 +353,21 @@ class Ui_MainWindow(object):
         self.pushButton_5.setSizePolicy(sizePolicy)
         self.pushButton_5.setMaximumSize(QtCore.QSize(120, 60))
         self.pushButton_5.setStyleSheet("QPushButton{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(248, 248, 248);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    font-family:微软雅黑;\n"
-"    background-color: rgb(233, 237, 238);\n"
-"    border: none;\n"
-"}\n"
-"")
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(248, 248, 248);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "QPushButton:pressed{\n"
+                                        "    font-family:微软雅黑;\n"
+                                        "    background-color: rgb(233, 237, 238);\n"
+                                        "    border: none;\n"
+                                        "}\n"
+                                        "")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap("../res/更多.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_5.setIcon(icon7)
@@ -429,7 +429,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
         self.lineEdit.setSizePolicy(sizePolicy)
         self.lineEdit.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"font-family:微软雅黑")
+                                    "font-family:微软雅黑")
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout_6.addWidget(self.lineEdit)
         self.horizontalLayout_6.setStretch(0, 6)
