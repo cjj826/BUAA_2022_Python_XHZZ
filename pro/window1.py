@@ -75,6 +75,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         for i in range(count):
             item = self.listWidget.takeItem(0)
             del item
+        if tasks is None:
+            return 
         for task in tasks:
             item = CustomListWidgetItem(task)
             self.listWidget.addItem(item)
@@ -84,6 +86,6 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = masterWindow()
-    main_window.setUser("123")
+    main_window.setUser("321")
     main_window.show()
     sys.exit(app.exec_())
