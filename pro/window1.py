@@ -1,11 +1,16 @@
+from typing import Union
+
 from PyQt5.QtWidgets import (QWidget, QSlider, QApplication,
-                             QHBoxLayout, QVBoxLayout, QMainWindow, QListWidgetItem)
-from PyQt5.QtCore import QObject, Qt, pyqtSignal, QTimer, QDateTime
+                             QHBoxLayout, QVBoxLayout, QMainWindow, QListWidgetItem, QCheckBox, QLabel, QSizePolicy)
+from PyQt5.QtCore import QObject, Qt, pyqtSignal, QTimer, QDateTime, QSize
 from PyQt5.QtGui import QPainter, QFont, QColor, QPen
 
 import sys
 import untitled
+from customItem import CustomListWidgetItem
 from inputDialog import InputDialog
+from mytask import Mytask
+
 
 class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def __init__(self):
@@ -37,6 +42,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
             l = [self.INPUT.titleLable.text(), self.INPUT.contentLable.text(),
                  self.INPUT.dateLable.text(), self.INPUT.importanceLable.text()]
             print(l)
+            self.updateListWidget()
 
     def showtime(self):
         time=QDateTime.currentDateTime()#获取当前时间
@@ -61,10 +67,23 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def setUser(self, username):
         self.userName = username
         print(self.userName)
+        self.updateListWidget()
+
+    def updateListWidget(self):
+        tasks = Mytask.getTasks(self.userName)#只会获取到今日任务
+        count = self.listWidget.count()
+        for i in range(count):
+            item = self.listWidget.takeItem(0)
+            del item
+        for task in tasks:
+            item = CustomListWidgetItem(task)
+            self.listWidget.addItem(item)
+            self.listWidget.setItemWidget(item,item.widget)
+
 
 if __name__ == '__main__':
-
     app = QApplication(sys.argv)
     main_window = masterWindow()
+    main_window.setUser("123")
     main_window.show()
     sys.exit(app.exec_())

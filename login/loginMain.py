@@ -31,8 +31,8 @@ class loginWorkStation(Ui_MainWindow):
     def loginsuccess(self):
         print("login success")
         self.main_window = masterWindow()
-        self.main_window.show()
         self.main_window.setUser(self.userName)
+        self.main_window.show()
         self.loginwindow.close()
         pass
 
