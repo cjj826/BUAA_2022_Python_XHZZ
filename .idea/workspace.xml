@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="4b5f4c72-c108-48c2-b7f7-a3788fe17c4e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/missionlist_py.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/missionlist_py.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/loginMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/loginMain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/loginMainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/loginMainWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/MySql.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/MySql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/AddMissionWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/AddMissionWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/CalendarCell.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/CalendarCell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/pro.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pro/MyCalendar.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/MyCalendar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/PerpetualCalendar.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/PerpetualCalendar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/mytask.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/mytask.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pro/untitled.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/untitled.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pro/window1.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/window1.py" afterDir="false" />
     </list>
@@ -43,7 +42,6 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/PyCharm2022.2/python_stubs/-719379630/PyQt5/QtWidgets/QAbstractButton.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/login/loginMain.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/login/loginMainWindow.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/mysql/MySql.py" root0="FORCE_HIGHLIGHTING" />
@@ -74,7 +72,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -86,29 +85,7 @@
       <recent name="E:\buaa_python_2022\MissionList\missionlist_py" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.MyCalendar">
-    <configuration name="AddMissionWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="missionlist_py" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pro" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pro/AddMissionWindow.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.loginMain">
     <configuration name="MyCalendar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="missionlist_py" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,9 +115,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\86150\AppData\Local\Programs\Python\Python39\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/login" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -153,57 +130,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="untitled" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="missionlist_py" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pro" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pro/untitled.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="window1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="missionlist_py" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pro" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pro/window1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MyCalendar" />
         <item itemvalue="Python.loginMain" />
-        <item itemvalue="Python.window1" />
-        <item itemvalue="Python.AddMissionWindow" />
-        <item itemvalue="Python.untitled" />
+        <item itemvalue="Python.MyCalendar" />
       </list>
     </recent_temporary>
   </component>
@@ -223,6 +153,8 @@
       <workItem from="1659313279094" duration="11546000" />
       <workItem from="1659423984042" duration="15086000" />
       <workItem from="1659518421751" duration="1988000" />
+      <workItem from="1659574209216" duration="297000" />
+      <workItem from="1659574515308" duration="2957000" />
     </task>
     <servers />
   </component>
@@ -252,9 +184,16 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/missionlist_py$MyCalendar.coverage" NAME="MyCalendar Coverage Results" MODIFIED="1659519131225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$DateTime.coverage" NAME="DateTime Coverage Results" MODIFIED="1659325811967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$window1.coverage" NAME="window1 Coverage Results" MODIFIED="1659574038143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
     <SUITE FILE_PATH="coverage/missionlist_py$AddMissionWindow.coverage" NAME="AddMissionWindow Coverage Results" MODIFIED="1659436509351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
-    <SUITE FILE_PATH="coverage/missionlist_py$window1.coverage" NAME="window1 Coverage Results" MODIFIED="1659518576484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
-    <SUITE FILE_PATH="coverage/missionlist_py$loginMain.coverage" NAME="loginMain Coverage Results" MODIFIED="1659519088365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/missionlist_py$customItem.coverage" NAME="customItem Coverage Results" MODIFIED="1659405550174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$MySql.coverage" NAME="MySql Coverage Results" MODIFIED="1659411276530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mysql" />
+    <SUITE FILE_PATH="coverage/missionlist_py$inputDialog.coverage" NAME="inputDialog Coverage Results" MODIFIED="1659325842553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$loginMain.coverage" NAME="loginMain Coverage Results" MODIFIED="1659578806093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login" />
+    <SUITE FILE_PATH="coverage/missionlist_py$loginMainWindow.coverage" NAME="loginMainWindow Coverage Results" MODIFIED="1659278808608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login" />
+    <SUITE FILE_PATH="coverage/missionlist_py$mytask.coverage" NAME="mytask Coverage Results" MODIFIED="1659363484195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$MyCalendar.coverage" NAME="MyCalendar Coverage Results" MODIFIED="1659575126994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$test.coverage" NAME="test Coverage Results" MODIFIED="1659421242821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/微信/FileStorage/WeChat Files/wxid_ugo1mwfw18zq12/FileStorage/File/2022-08" />
   </component>
 </project>

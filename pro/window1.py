@@ -34,8 +34,9 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def addCalendar(self):
         # self.calendar = MyCalendar(self.userName)
         # self.verticalLayout_9.addWidget(self.calendar)
-        self.verticalLayout_9.addWidget(MyCalendar(self.userName))
+        # self.verticalLayout_9.addWidget(MyCalendar(self.userName))
         # self.calendar.show()
+        pass
     def addAssignment(self):
         #print(self.lineEdit.text())
         self.INPUT = InputDialog()

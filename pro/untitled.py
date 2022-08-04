@@ -454,7 +454,7 @@ class Ui_MainWindow(object):
         self.page_5.setObjectName("page_5")
         self.stackedWidget.addWidget(self.page_5)
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.page_5)
-        self.page_5.setLayout(self.verticalLayout_9)
+        #self.page_5.setLayout(self.verticalLayout_9)
 
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
