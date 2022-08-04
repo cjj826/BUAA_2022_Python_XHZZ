@@ -189,6 +189,10 @@ class MyCalendar(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+<<<<<<< HEAD
     cell = MyCalendar('333')
+=======
+    cell = MyCalendar('15978757317')
+>>>>>>> 3a3b95f70ddaf9fc99baee3e289d704ef82c31d6
     cell.show()
     sys.exit(app.exec_())

@@ -12,7 +12,11 @@ class MySql():
         try:
             self.con = pymysql.connect(host='localhost',
                                       user='root',
+<<<<<<< HEAD
                                       password='root')
+=======
+                                      password='888718')
+>>>>>>> 3a3b95f70ddaf9fc99baee3e289d704ef82c31d6
             self.con.autocommit(1)
             self.cursor = self.con.cursor()
         except:
