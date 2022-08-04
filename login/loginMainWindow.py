@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -26,8 +27,8 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.lineEdit.setFont(font)
         self.lineEdit.setStyleSheet("border:1px solid rgb(0,0,0);\n"
-"border-radius:8px;\n"
-"")
+                                    "border-radius:8px;\n"
+                                    "")
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.widget)
         self.lineEdit_2.setGeometry(QtCore.QRect(30, 110, 211, 41))
@@ -36,8 +37,8 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.lineEdit_2.setFont(font)
         self.lineEdit_2.setStyleSheet("border:1px solid rgb(0,0,0);\n"
-"border-radius:8px;\n"
-"")
+                                      "border-radius:8px;\n"
+                                      "")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_3 = QtWidgets.QLabel(self.widget)
         self.label_3.setGeometry(QtCore.QRect(30, 20, 54, 12))
@@ -61,14 +62,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("#pushButton{\n"
-"border:none;\n"
-"color:rgb(0, 140, 142);\n"
-"}\n"
-"#pushButton:pressed{\n"
-"    padding-top:5px;\n"
-"    padding-left:5px;\n"
-"}\n"
-"")
+                                      "border:none;\n"
+                                      "color:rgb(0, 140, 142);\n"
+                                      "}\n"
+                                      "#pushButton:pressed{\n"
+                                      "    padding-top:5px;\n"
+                                      "    padding-left:5px;\n"
+                                      "}\n"
+                                      "")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_5 = QtWidgets.QPushButton(self.widget)
         self.pushButton_5.setGeometry(QtCore.QRect(30, 160, 211, 41))
@@ -78,17 +79,17 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_5.setFont(font)
         self.pushButton_5.setStyleSheet("#pushButton_5{\n"
-"    background-color:rgb(0, 140, 142);\n"
-"    color:rgb(255, 255, 255);\n"
-"    border-radius:8px;\n"
-"}\n"
-"#pushButton_5:hover{\n"
-"    background-color: rgb(0,130,142);\n"
-"}\n"
-"#pushButton_5:pressed{\n"
-"    padding-top:5px;\n"
-"    padding-left:5px;\n"
-"}")
+                                        "    background-color:rgb(0, 140, 142);\n"
+                                        "    color:rgb(255, 255, 255);\n"
+                                        "    border-radius:8px;\n"
+                                        "}\n"
+                                        "#pushButton_5:hover{\n"
+                                        "    background-color: rgb(0,130,142);\n"
+                                        "}\n"
+                                        "#pushButton_5:pressed{\n"
+                                        "    padding-top:5px;\n"
+                                        "    padding-left:5px;\n"
+                                        "}")
         self.pushButton_5.setObjectName("pushButton_5")
         self.widget_2 = QtWidgets.QWidget(self.centralwidget)
         self.widget_2.setGeometry(QtCore.QRect(340, 100, 261, 241))
@@ -100,8 +101,8 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.lineEdit_5.setFont(font)
         self.lineEdit_5.setStyleSheet("border:1px solid rgb(0,0,0);\n"
-"border-radius:8px;\n"
-"")
+                                      "border-radius:8px;\n"
+                                      "")
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.lineEdit_6 = QtWidgets.QLineEdit(self.widget_2)
         self.lineEdit_6.setGeometry(QtCore.QRect(30, 110, 211, 41))
@@ -110,8 +111,8 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.lineEdit_6.setFont(font)
         self.lineEdit_6.setStyleSheet("border:1px solid rgb(0,0,0);\n"
-"border-radius:8px;\n"
-"")
+                                      "border-radius:8px;\n"
+                                      "")
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.label_7 = QtWidgets.QLabel(self.widget_2)
         self.label_7.setGeometry(QtCore.QRect(30, 20, 54, 12))
@@ -135,14 +136,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setStyleSheet("#pushButton_2{\n"
-"border:none;\n"
-"color:rgb(0, 140, 142);\n"
-"}\n"
-"#pushButton_2:pressed{\n"
-"    padding-top:5px;\n"
-"    padding-left:5px;\n"
-"}\n"
-"")
+                                        "border:none;\n"
+                                        "color:rgb(0, 140, 142);\n"
+                                        "}\n"
+                                        "#pushButton_2:pressed{\n"
+                                        "    padding-top:5px;\n"
+                                        "    padding-left:5px;\n"
+                                        "}\n"
+                                        "")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_6 = QtWidgets.QPushButton(self.widget_2)
         self.pushButton_6.setGeometry(QtCore.QRect(30, 160, 211, 41))
@@ -152,17 +153,17 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_6.setFont(font)
         self.pushButton_6.setStyleSheet("#pushButton_6{\n"
-"    background-color:rgb(0, 140, 142);\n"
-"    color:rgb(255, 255, 255);\n"
-"    border-radius:8px;\n"
-"}\n"
-"#pushButton_6:hover{\n"
-"    background-color: rgb(0,130,142);\n"
-"}\n"
-"#pushButton_6:pressed{\n"
-"    padding-top:5px;\n"
-"    padding-left:5px;\n"
-"}")
+                                        "    background-color:rgb(0, 140, 142);\n"
+                                        "    color:rgb(255, 255, 255);\n"
+                                        "    border-radius:8px;\n"
+                                        "}\n"
+                                        "#pushButton_6:hover{\n"
+                                        "    background-color: rgb(0,130,142);\n"
+                                        "}\n"
+                                        "#pushButton_6:pressed{\n"
+                                        "    padding-top:5px;\n"
+                                        "    padding-left:5px;\n"
+                                        "}")
         self.pushButton_6.setObjectName("pushButton_6")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setGeometry(QtCore.QRect(600, 0, 21, 16))
@@ -177,8 +178,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setStyleSheet("background-color: rgb(229, 77, 66);\n"
-"color: rgb(255, 255, 255);\n"
-"")
+                                   "color: rgb(255, 255, 255);\n"
+                                   "")
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(440, 370, 181, 20))
@@ -188,8 +189,8 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("background-color: rgb(229, 77, 66);\n"
-"color: rgb(255, 255, 255);\n"
-"")
+                                   "color: rgb(255, 255, 255);\n"
+                                   "")
         self.label_6.setObjectName("label_6")
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         self.label_9.setGeometry(QtCore.QRect(440, 370, 181, 20))
@@ -199,10 +200,10 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("background-color: rgb(229, 77, 66);\n"
-"color: rgb(255, 255, 255);\n"
-"")
+                                   "color: rgb(255, 255, 255);\n"
+                                   "")
         self.label_9.setTextFormat(QtCore.Qt.AutoText)
-        self.label_9.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_9.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(440, 370, 181, 20))
@@ -212,10 +213,10 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_10.setFont(font)
         self.label_10.setStyleSheet("background-color: rgb(229, 77, 66);\n"
-"color: rgb(255, 255, 255);\n"
-"")
+                                    "color: rgb(255, 255, 255);\n"
+                                    "")
         self.label_10.setTextFormat(QtCore.Qt.AutoText)
-        self.label_10.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_10.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(self.centralwidget)
         self.label_11.setGeometry(QtCore.QRect(440, 370, 181, 20))
@@ -225,10 +226,10 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_11.setFont(font)
         self.label_11.setStyleSheet("background-color: rgb(22, 194, 194);\n"
-"color: rgb(255, 255, 255);\n"
-"")
+                                    "color: rgb(255, 255, 255);\n"
+                                    "")
         self.label_11.setTextFormat(QtCore.Qt.AutoText)
-        self.label_11.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_11.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_11.setObjectName("label_11")
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -350,4 +351,6 @@ class Ui_MainWindow(object):
     # def change2login(self):
     #     self.widget_2.hide()
     #     self.widget.show()
+
+
 import resources_rc

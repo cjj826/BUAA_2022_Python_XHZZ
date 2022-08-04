@@ -2,10 +2,9 @@
 from DateCalc import *
 import re
 import time
-from MyCalendar import MyCalendar
 
 
-def borderDate(calendar: MyCalendar, month, day):  # 选中后加框
+def borderDate(calendar, month, day):  # 选中后加框
 	firstDate = int(re.findall(r'(\d+)</font>', calendar.labs[0][0].getLabel().text())[0])
 	if firstDate == 1:
 		idx = - firstDate + day
@@ -16,7 +15,7 @@ def borderDate(calendar: MyCalendar, month, day):  # 选中后加框
 	selected.setStyleSheet("QWidget{border:3px solid; border-radius: 5px; border-color:#1E90FF}")
 
 
-def yearItems(calendar: MyCalendar):
+def yearItems(calendar):
 	century = calendar.comboBoxCentury.currentIndex() + start_century + 1
 	calendar.comboBoxYear.clear()
 	for i in range(100):
@@ -28,7 +27,7 @@ def yearItems(calendar: MyCalendar):
 	calendar.comboBoxYear.setCurrentIndex(0)
 
 
-def lastYear(calendar: MyCalendar):
+def lastYear(calendar):
 	idx = calendar.comboBoxYear.currentIndex()
 	if idx == 0:
 		century = calendar.comboBoxCentury.currentIndex()
@@ -40,7 +39,7 @@ def lastYear(calendar: MyCalendar):
 		calendar.comboBoxYear.setCurrentIndex(idx - 1)
 
 
-def nextYear(calendar: MyCalendar):
+def nextYear(calendar):
 	idx = calendar.comboBoxYear.currentIndex()
 	century = calendar.comboBoxCentury.currentIndex()
 	if idx == -1 or century == endCentury - start_century - 1:
@@ -51,7 +50,7 @@ def nextYear(calendar: MyCalendar):
 		calendar.comboBoxYear.setCurrentIndex(idx + 1)
 
 
-def jumpYear(calendar: MyCalendar):  # 本世纪首年或末年时跳转上世纪或下世纪
+def jumpYear(calendar):  # 本世纪首年或末年时跳转上世纪或下世纪
 	idx = calendar.comboBoxYear.currentIndex()
 	century = calendar.comboBoxCentury.currentIndex()
 	if idx == 0:
@@ -65,7 +64,7 @@ def jumpYear(calendar: MyCalendar):  # 本世纪首年或末年时跳转上世�
 	displayDate(calendar)
 
 
-def lastMonth(calendar: MyCalendar):
+def lastMonth(calendar):
 	idx = calendar.comboBoxMonth.currentIndex()
 	if idx == 0:
 		lastYear(calendar)
@@ -74,7 +73,7 @@ def lastMonth(calendar: MyCalendar):
 		calendar.comboBoxMonth.setCurrentIndex(idx - 1)
 
 
-def nextMonth(calendar: MyCalendar):
+def nextMonth(calendar):
 	idx = calendar.comboBoxMonth.currentIndex()
 	if idx == 11:
 		nextYear(calendar)
@@ -83,7 +82,7 @@ def nextMonth(calendar: MyCalendar):
 		calendar.comboBoxMonth.setCurrentIndex(idx + 1)
 
 
-def jumpMonth(calendar: MyCalendar):
+def jumpMonth(calendar):
 	idx = calendar.comboBoxMonth.currentIndex()
 	if idx == 0:
 		lastYear(calendar)
@@ -129,7 +128,7 @@ def jumpLCF(currentFes, ymb, shuoJD):  # 节日农历月转公历月
 			return month
 
 
-def getYearMonth(calendar: MyCalendar, wheel=0): # 根据输入重设年月
+def getYearMonth(calendar, wheel=0): # 根据输入重设年月
 	edit = calendar.comboBoxYear.currentText()
 	try:
 		year = int(re.search(r'-?\d+', edit).group())
@@ -163,8 +162,9 @@ def updateYear():
 	yearYMB, yearSJD = LunarCalendar(setYear, 0)
 	yearST = getSolorTerms(setYear)
 
-
-def displayMonth(calendar: MyCalendar):
+# from MyCalendar import MyCalendar
+# def displayMonth(calendar:MyCalendar):
+def displayMonth(calendar):
 	year, month = getYearMonth(calendar)
 	if year == 0: return 0, 0, 0
 	ymb, shuoJD, jqb = yearYMB, yearSJD, yearST
@@ -257,10 +257,13 @@ def displayMonth(calendar: MyCalendar):
 				jqrx += DateDiffer(shuoJD[yx1 + 2], shuoJD[yx1]) - rqx1 + blank
 				if 0 < jqrx <= MAX_DAYSinMONTH_TABLE[i] + blank: calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 20, "red", 800) + font(fes[2], 12, "red"))
 			if fes[2] == currentFes: fesDay = jqrx - blank + 1
+
+	for i in range(6):
+		for j in range(7):
+			calendar.labs[i][j].updateMissionsInMissionList()
 	return year, month, fesDay
 
-
-def displayDate(calendar: MyCalendar):
+def displayDate(calendar):
 	global selected
 	try:
 		selected.setStyleSheet("")

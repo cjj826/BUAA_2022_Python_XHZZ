@@ -7,6 +7,7 @@ from PyQt5.QtGui import QPainter, QFont, QColor, QPen
 
 import sys
 import untitled
+from MyCalendar import MyCalendar
 from customItem import CustomListWidgetItem
 from inputDialog import InputDialog
 from mytask import Mytask
@@ -30,7 +31,11 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.timer.start(1000)  # 每隔一秒刷新一次，这里设置为1000ms
         self.lineEdit.setPlaceholderText("添加任务，按回车创建")
         self.lineEdit.returnPressed.connect(self.addAssignment)
-
+    def addCalendar(self):
+        # self.calendar = MyCalendar(self.userName)
+        # self.verticalLayout_9.addWidget(self.calendar)
+        self.verticalLayout_9.addWidget(MyCalendar(self.userName))
+        # self.calendar.show()
     def addAssignment(self):
         #print(self.lineEdit.text())
         self.INPUT = InputDialog()
@@ -86,6 +91,6 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = masterWindow()
-    main_window.setUser("321")
+    main_window.setUser("Zhangkg")
     main_window.show()
     sys.exit(app.exec_())

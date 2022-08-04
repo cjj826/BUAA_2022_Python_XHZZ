@@ -8,13 +8,16 @@ from CalendarCell import CalendarCell
 from ComboBox import ComboBox
 from Defines import *
 from DateLabel import DateLabel
-from PerpetualCalendar import *
+from PerpetualCalendar import displayDate, yearItems, jumpYear, jumpMonth, lastMonth, nextMonth, lastYear, nextYear
 
-class MyCalendar(QMainWindow):
-    def __init__(self):
+
+class MyCalendar(QWidget):
+    def __init__(self, userName):
         super().__init__()
-        self.wnlWidget = QWidget()
+        # self.wnlWidget = QWidget()
+        self.userName = userName
         self.setupUI()
+
 
     def setupUI(self):
         pe = QPalette()
@@ -22,15 +25,16 @@ class MyCalendar(QMainWindow):
         self.setPalette(pe)
         # self.setFixedSize(2500, 1800)
         self.setWindowTitle("万年历")
-        self.setCentralWidget(self.wnlWidget)
+        # self.setCentralWidget(self.wnlWidget)
 
         self.calendarUI()
         displayDate(self)
-        self.show()
+        # self.show()
 
     def calendarUI(self):
         self.gridWNL = QGridLayout()
-        self.wnlWidget.setLayout(self.gridWNL)
+        self.setLayout(self.gridWNL)
+        # self.wnlWidget.setLayout(self.gridWNL)
         self.gridWNL.setSpacing(0)
         self.hlayWNL = QHBoxLayout()
         self.hlayWNL.setContentsMargins(3, 0, 5, 0)
@@ -123,9 +127,9 @@ class MyCalendar(QMainWindow):
         for i in range(6):
             for j in range(7):
                 if j == 0:
-                    self.labs.append([CalendarCell()])
+                    self.labs.append([CalendarCell(self.userName, self)])
                 else:
-                    self.labs[i].append(CalendarCell())
+                    self.labs[i].append(CalendarCell(self.userName, self))
                 # self.labs[i][j].setFixedSize(350, 300)
                 self.labs[i][j].getLabel().clicked.connect(lambda : displayDate(self))
                 # self.labs[i][j].getMissionList().clicked.connect(lambda : ) TODO
@@ -185,5 +189,6 @@ class MyCalendar(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    cell = MyCalendar()
+    cell = MyCalendar('Zhangkg')
+    cell.show()
     sys.exit(app.exec_())

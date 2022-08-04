@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore
 from login.loginMainWindow import Ui_MainWindow
 from mytask import Mytask
+from MyCalendar import MyCalendar
 
 
 class loginWorkStation(Ui_MainWindow):
@@ -32,6 +33,8 @@ class loginWorkStation(Ui_MainWindow):
         print("login success")
         self.main_window = masterWindow()
         self.main_window.setUser(self.userName)
+        self.main_window.addCalendar()
+        # self.calendar = MyCalendar()
         self.main_window.show()
         self.loginwindow.close()
         pass

@@ -13,6 +13,12 @@ class Mytask:
         self.deadline = deadline
         self.importance = importance
 
+    def getDeadline(self):
+        return self.deadline
+
+    def getTaskName(self):
+        return self.taskName
+
     @staticmethod
     def getTasks(userName, isToday = True, isSort = True):
         mysql = MySql()
