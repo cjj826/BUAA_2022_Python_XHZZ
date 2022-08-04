@@ -8,15 +8,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/missionlist_py.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/missionlist_py.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/loginMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/loginMain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/loginMainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/loginMainWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/MySql.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/MySql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/AddMissionWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/AddMissionWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/CalendarCell.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/CalendarCell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/pro.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pro/MyCalendar.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/MyCalendar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/PerpetualCalendar.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/PerpetualCalendar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pro/mytask.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/mytask.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pro/untitled.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/untitled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro/untitled.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pro/untitled.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pro/window1.py" beforeDir="false" afterPath="$PROJECT_DIR$/pro/window1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +32,17 @@
       </list>
     </option>
   </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -43,23 +55,22 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/PyCharm2022.2/python_stubs/-719379630/PyQt5/QtWidgets/QAbstractButton.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/login/loginMain.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/login/loginMainWindow.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/mysql/MySql.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/AddMissionWindow.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/CalendarCell.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/DateCalc.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/DateLabel.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/DateTime.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/MissionList.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/MyCalendar.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/customItem.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/inputDialog.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/mytask.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pro/time.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pro/untitled.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/MyCalendar.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/mytask.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pro/window1.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/customItem.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/mysql/MySql.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/DateTime.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/time.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/login/loginMainWindow.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/DateCalc.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/login/loginMain.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/DateLabel.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/MissionList.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/CalendarCell.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/AddMissionWindow.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pro/inputDialog.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,14 +80,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\buaa_python_2022\MissionList\missionlist_py\login" />
@@ -86,7 +97,7 @@
       <recent name="E:\buaa_python_2022\MissionList\missionlist_py" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.MyCalendar">
+  <component name="RunManager" selected="Python.window1">
     <configuration name="AddMissionWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="missionlist_py" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,7 +149,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\86150\AppData\Local\Programs\Python\Python39\python.exe" />
+      <option name="SDK_HOME" value="D:\conda\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -153,7 +164,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="untitled" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="missionlist_py" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,7 +177,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pro/untitled.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pro/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -197,13 +208,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.AddMissionWindow" />
+      <item itemvalue="Python.loginMain" />
+      <item itemvalue="Python.MyCalendar" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.window1" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MyCalendar" />
-        <item itemvalue="Python.loginMain" />
         <item itemvalue="Python.window1" />
+        <item itemvalue="Python.loginMain" />
+        <item itemvalue="Python.MyCalendar" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.AddMissionWindow" />
-        <item itemvalue="Python.untitled" />
       </list>
     </recent_temporary>
   </component>
@@ -223,6 +241,9 @@
       <workItem from="1659313279094" duration="11546000" />
       <workItem from="1659423984042" duration="15086000" />
       <workItem from="1659518421751" duration="1988000" />
+      <workItem from="1659572459688" duration="69000" />
+      <workItem from="1659572551604" duration="360000" />
+      <workItem from="1659572934679" duration="10714000" />
     </task>
     <servers />
   </component>
@@ -252,9 +273,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/missionlist_py$MyCalendar.coverage" NAME="MyCalendar Coverage Results" MODIFIED="1659519131225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$window1.coverage" NAME="window1 Coverage Results" MODIFIED="1659584314520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$MyCalendar.coverage" NAME="MyCalendar Coverage Results" MODIFIED="1659583992074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
+    <SUITE FILE_PATH="coverage/missionlist_py$loginMain.coverage" NAME="loginMain Coverage Results" MODIFIED="1659584631167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/missionlist_py$test.coverage" NAME="test Coverage Results" MODIFIED="1659576263445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
     <SUITE FILE_PATH="coverage/missionlist_py$AddMissionWindow.coverage" NAME="AddMissionWindow Coverage Results" MODIFIED="1659436509351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
-    <SUITE FILE_PATH="coverage/missionlist_py$window1.coverage" NAME="window1 Coverage Results" MODIFIED="1659518576484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pro" />
-    <SUITE FILE_PATH="coverage/missionlist_py$loginMain.coverage" NAME="loginMain Coverage Results" MODIFIED="1659519088365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
