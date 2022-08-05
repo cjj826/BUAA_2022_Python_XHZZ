@@ -931,7 +931,7 @@ font-family:微软雅黑</string>
                <number>0</number>
               </property>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="2,1,2,8,8,8">
+               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="2,1,2,0,8,8,8,16,0,2">
                 <property name="spacing">
                  <number>0</number>
                 </property>
@@ -951,7 +951,7 @@ font-family:微软雅黑</string>
                     <property name="maximumSize">
                      <size>
                       <width>50</width>
-                      <height>25</height>
+                      <height>30</height>
                      </size>
                     </property>
                     <property name="toolTip">
@@ -985,20 +985,11 @@ QPushButton:pressed{
                    </widget>
                   </item>
                   <item>
-                   <spacer name="horizontalSpacer">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                   <widget class="QLabel" name="label_14">
+                    <property name="text">
+                     <string/>
                     </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Preferred</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
+                   </widget>
                   </item>
                   <item>
                    <widget class="QPushButton" name="pushButton_11">
@@ -1011,7 +1002,7 @@ QPushButton:pressed{
                     <property name="maximumSize">
                      <size>
                       <width>50</width>
-                      <height>25</height>
+                      <height>30</height>
                      </size>
                     </property>
                     <property name="styleSheet">
@@ -1058,7 +1049,7 @@ QPushButton:pressed{
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgb(207, 207, 207);</string>
+                   <string notr="true">background-color: rgb(227, 227, 227);</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -1073,8 +1064,31 @@ QPushButton:pressed{
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">border: none;</string>
+                   <string notr="true">border: none;
+font-family:微软雅黑;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_15">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>2</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(227, 227, 227);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -1086,8 +1100,18 @@ QPushButton:pressed{
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">border: none;</string>
+                   <string notr="true">border: none;
+font-family:微软雅黑;</string>
+                  </property>
+                  <property name="tabStopWidth">
+                   <number>20</number>
                   </property>
                  </widget>
                 </item>
@@ -1099,8 +1123,15 @@ QPushButton:pressed{
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">border: none;</string>
+                   <string notr="true">border: none;
+font-family:微软雅黑;</string>
                   </property>
                  </widget>
                 </item>
@@ -1112,8 +1143,54 @@ QPushButton:pressed{
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">border: none;</string>
+                   <string notr="true">border: none;
+font-family:微软雅黑;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_13">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_16">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>5</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(237, 237, 237);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_17">
+                  <property name="styleSheet">
+                   <string notr="true">font-family:微软雅黑;</string>
+                  </property>
+                  <property name="text">
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -1160,9 +1237,7 @@ QPushButton:pressed{
   <tabstop>listWidget_4</tabstop>
   <tabstop>listWidget_3</tabstop>
  </tabstops>
- <resources>
-  <include location="../res/new.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>pushButton_8</sender>

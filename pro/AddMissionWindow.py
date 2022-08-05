@@ -3,10 +3,8 @@ import sys
 
 from MissionList import MissionList
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 from DateLabel import DateLabel
-from customItem import CustomListWidgetItem
+from MainWindow.customItem import CustomListWidgetItem
 from inputDialog import InputDialog
 from mytask import Mytask
 from PerpetualCalendar import *

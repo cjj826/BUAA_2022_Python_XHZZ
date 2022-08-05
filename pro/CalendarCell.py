@@ -3,14 +3,11 @@ import re
 import sys
 
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 
 from AddMissionWindow import AddMissionWindow
 from DateLabel import DateLabel
 from MissionList import MissionList
 from PerpetualCalendar import getYearMonth
-from customItem import CustomListWidgetItem
 from mytask import Mytask
 
 

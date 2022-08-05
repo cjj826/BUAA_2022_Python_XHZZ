@@ -1,18 +1,12 @@
-from typing import Union
-
-from PyQt5.QtWidgets import (QWidget, QSlider, QApplication,
-                             QHBoxLayout, QVBoxLayout, QMainWindow, QListWidgetItem, QCheckBox, QLabel, QSizePolicy,
-                             QPushButton)
-from PyQt5.QtCore import QObject, Qt, pyqtSignal, QTimer, QDateTime, QSize, QPropertyAnimation, QRect
-from PyQt5.QtGui import QPainter, QFont, QColor, QPen
+from PyQt5.QtWidgets import (QApplication,
+                             QMainWindow)
+from PyQt5.QtCore import QTimer, QDateTime
 
 import sys
 
-from pyqt5_plugins.examplebutton import QtWidgets
 
 import untitled
-from MyCalendar import MyCalendar
-from customItem import CustomListWidgetItem
+from MainWindow.customItem import CustomListWidgetItem
 from inputDialog import InputDialog
 from mytask import Mytask
 
@@ -36,25 +30,67 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.lineEdit.returnPressed.connect(self.addAssignment)
 
         #设计侧边栏，侧边栏应该是mainWindow的一个属性，尝试对象是widget
-        self.button = QPushButton("Start", self)
-        self.button.clicked.connect(self.showSider)
-        self.button.move(0, 800)
+        # self.button = QPushButton("Start", self)
+        # self.button.clicked.connect(self.showSider)
+        # self.button.move(0, 800)
 
         self.pushButton_10.clicked.connect(self.hideSider)
-
+        self.pushButton_11.clicked.connect(self.deleteTask)
         #侧边栏编辑提示文本
         self.lineEdit_2.setPlaceholderText("任务标题")
         self.textEdit_2.setPlaceholderText("内容描述")
         self.textEdit_3.setPlaceholderText("截止日期")
         self.textEdit_4.setPlaceholderText("重要性")
+        self.widget.hide()
+        self.lineEdit_2.editingFinished.connect(self.update_taskName)
+        self.textEdit_2.textChanged.connect(self.update_taskContent)#not sure
+        self.textEdit_3.textChanged.connect(self.update_taskDeadline)#not sure
+        self.textEdit_4.textChanged.connect(self.update_taskImportance)#not sure
+        self.showingTask = None
 
-    def showSider(self):
+    def update_taskName(self):
+        self.showingTask.updateTask("taskName", self.lineEdit_2.text())
+
+    def update_taskContent(self):
+        self.showingTask.updateTask("content", self.textEdit_2.toPlainText())
+
+    def update_taskDeadline(self):
+        self.showingTask.updateTask("deadline", self.textEdit_3.toPlainText())
+
+    def update_taskImportance(self):
+        self.showingTask.updateTask("importance", self.textEdit_4.toPlainText())
+
+
+    def showSider(self, task):
+        """展示侧边栏
+        """
+        self.showingTask = task
         self.widget.show()
         self.horizontalLayout_4.setStretch(0, 1)
         self.horizontalLayout_4.setStretch(1, 1)
+        self.lineEdit_2.setText(task.taskName)
+        self.textEdit_2.setPlainText(task.content)
+        self.textEdit_3.setPlainText(task.deadline)
+        self.textEdit_4.setPlainText(task.importance)
+
+    def deleteTask(self):
+        """通过侧边栏删除任务；删除按钮的slot函数
+        """
+        self.lineEdit_2.clear()
+        self.textEdit_2.clear()
+        self.textEdit_3.clear()
+        self.textEdit_4.clear()
+        self.showingTask.delete()
+        self.showingTask = None
+        self.hideSider()
 
     def hideSider(self):
+        """隐藏侧边栏
+        """
         self.widget.hide()
+        if self.showingTask is not None:
+            self.showingTask.updateSql()
+        self.updateListWidget()
 
 
     def addCalendar(self):
@@ -63,11 +99,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         # self.verticalLayout_9.addWidget(self.calendar)
         # self.verticalLayout_9.addWidget(MyCalendar(self.userName))
         # self.calendar.show()
-<<<<<<< HEAD
-        pass
-=======
 
->>>>>>> 3a3b95f70ddaf9fc99baee3e289d704ef82c31d6
     def addAssignment(self):
         #print(self.lineEdit.text())
         self.INPUT = InputDialog()
@@ -114,8 +146,10 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
             del item
         if tasks is None:
             return
+
         for task in tasks:
             item = CustomListWidgetItem(task)
+            item.addMasterWindow(self)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item,item.widget)
 

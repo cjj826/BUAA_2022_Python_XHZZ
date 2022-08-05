@@ -18,7 +18,7 @@ class DateTimeEditDemo(QDialog):
 
         #创建日期时间空间，并把当前日期时间赋值，。并修改显示格式
         self.dateEdit=QDateTimeEdit(QDateTime.currentDateTime(),self)
-        self.dateEdit.setDisplayFormat('yyyy-MM-dd HH:mm:ss')
+        self.dateEdit.setDisplayFormat('yyyy-MM-dd HH:mm')
 
         #设置日历控件允许弹出
         self.dateEdit.setCalendarPopup(True)

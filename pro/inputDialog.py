@@ -28,7 +28,7 @@ class InputDialog(QDialog):
         self.titleLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
         self.contentLable = QLabel()
         self.contentLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
-        self.dateLable = QLabel(" "*len('yyyy-MM-dd HH:mm:ss'))
+        self.dateLable = QLabel(" "*len('yyyy-MM-dd HH:mm'))
         self.dateLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
         self.importanceLable = QLabel()
         self.importanceLable.setFrameStyle(QFrame.Panel|QFrame.Sunken)
@@ -97,7 +97,7 @@ class InputDialog(QDialog):
     def setDate(self):
         self.DATE.exec_()
         if self.DATE.set == True:
-            date = self.DATE.dateEdit.dateTime().toString("yyyy-MM-dd HH:mm:ss")
+            date = self.DATE.dateEdit.dateTime().toString("yyyy-MM-dd HH:mm")
             self.dateLable.setText(date)
 
     def setImportance(self):
