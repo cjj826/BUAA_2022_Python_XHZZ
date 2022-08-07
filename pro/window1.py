@@ -1,13 +1,17 @@
+from datetime import datetime
+
 from PyQt5.QtWidgets import (QApplication,
                              QMainWindow)
 from PyQt5.QtCore import QTimer, QDateTime
 
 import sys
 
-
+import DateTime
 import untitled
 from MainWindow.customItem import CustomListWidgetItem
+from MyCalendar import MyCalendar
 from inputDialog import InputDialog
+from addDialog import AddDialog
 from mytask import Mytask
 
 class masterWindow(untitled.Ui_MainWindow, QMainWindow):
@@ -36,29 +40,30 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
         self.pushButton_10.clicked.connect(self.hideSider)
         self.pushButton_11.clicked.connect(self.deleteTask)
-        #侧边栏编辑提示文本
-        self.lineEdit_2.setPlaceholderText("任务标题")
-        self.textEdit_2.setPlaceholderText("内容描述")
-        self.textEdit_3.setPlaceholderText("截止日期")
-        self.textEdit_4.setPlaceholderText("重要性")
+        #侧边栏
+        self.start.setDisplayFormat('yyyy-MM-dd HH:mm')
+        self.end.setDisplayFormat('yyyy-MM-dd HH:mm')
+        self.start.setCalendarPopup(True)
+        self.end.setCalendarPopup(True)
+
         self.widget.hide()
-        self.lineEdit_2.editingFinished.connect(self.update_taskName)
-        self.textEdit_2.textChanged.connect(self.update_taskContent)#not sure
-        self.textEdit_3.textChanged.connect(self.update_taskDeadline)#not sure
-        self.textEdit_4.textChanged.connect(self.update_taskImportance)#not sure
+        self.title.editingFinished.connect(self.update_taskName)
+        self.content.textChanged.connect(self.update_taskContent) #content
+        self.time.dateTimeChanged.connect(self.update_taskDeadline)#not sure
+        self.importance.currentIndexChanged.connect(self.update_taskImportance)#update importance
         self.showingTask = None
 
     def update_taskName(self):
-        self.showingTask.updateTask("taskName", self.lineEdit_2.text())
+        self.showingTask.updateTask("taskName", self.title.text())
 
     def update_taskContent(self):
-        self.showingTask.updateTask("content", self.textEdit_2.toPlainText())
+        self.showingTask.updateTask("content", self.content.toPlainText())
 
     def update_taskDeadline(self):
-        self.showingTask.updateTask("deadline", self.textEdit_3.toPlainText())
+        self.showingTask.updateTask("deadline", self.end.dateTime().toString("yyyy-MM-dd HH:mm"))
 
     def update_taskImportance(self):
-        self.showingTask.updateTask("importance", self.textEdit_4.toPlainText())
+        self.showingTask.updateTask("importance", self.importance.currentText())
 
 
     def showSider(self, task):
@@ -68,18 +73,18 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.widget.show()
         self.horizontalLayout_4.setStretch(0, 1)
         self.horizontalLayout_4.setStretch(1, 1)
-        self.lineEdit_2.setText(task.taskName)
-        self.textEdit_2.setPlainText(task.content)
-        self.textEdit_3.setPlainText(task.deadline)
-        self.textEdit_4.setPlainText(task.importance)
+        self.title.setText(task.taskName)
+        self.content.setPlainText(task.content)
+        self.end.setDateTime(datetime.strptime(task.deadline, "%Y-%m-%d %H:%M"))
+        self.importance.setCurrentText(task.importance)
 
     def deleteTask(self):
         """通过侧边栏删除任务；删除按钮的slot函数
         """
-        self.lineEdit_2.clear()
-        self.textEdit_2.clear()
-        self.textEdit_3.clear()
-        self.textEdit_4.clear()
+        # self.lineEdit_2.clear()
+        # self.textEdit_2.clear()
+        # self.textEdit_3.clear()
+        # self.textEdit_4.clear()
         self.showingTask.delete()
         self.showingTask = None
         self.hideSider()
@@ -94,22 +99,24 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
 
     def addCalendar(self):
-        pass
-        # self.calendar = MyCalendar(self.userName)
-        # self.verticalLayout_9.addWidget(self.calendar)
-        # self.verticalLayout_9.addWidget(MyCalendar(self.userName))
-        # self.calendar.show()
+        self.calendar = MyCalendar(self.userName)
+        self.verticalLayout_9.addWidget(self.calendar)
+        self.verticalLayout_9.addWidget(MyCalendar(self.userName))
+        self.calendar.show()
 
     def addAssignment(self):
         #print(self.lineEdit.text())
-        self.INPUT = InputDialog()
+        self.INPUT = AddDialog()
         self.INPUT.setTitleAuto(self.lineEdit.text())
         self.INPUT.setUserName(self.userName)
         self.INPUT.exec_()
 
         if self.INPUT.set == True:
-            l = [self.INPUT.titleLable.text(), self.INPUT.contentLable.text(),
-                 self.INPUT.dateLable.text(), self.INPUT.importanceLable.text()]
+            l = [self.INPUT.title.text(), self.INPUT.type.currentText(),
+                 self.INPUT.start.dateTime().toString("yyyy-MM-dd HH:mm"),
+                 self.INPUT.end.dateTime().toString("yyyy-MM-dd HH:mm"),
+                 self.INPUT.time.time().toString("yyyy-MM-dd HH:mm"),
+                 self.INPUT.content.toPlainText(),self.INPUT.importance.currentText()]
             print(l)
             self.updateListWidget()
 

@@ -35,7 +35,7 @@ class CalendarCell(QWidget):
 
 
         self.setLayout(layout_main)
-        self.setFixedSize(250, 200)
+        # self.setFixedSize(250, 200)
         self.setStyleSheet("QWidget{border:0px}")
         # self.show()
 
