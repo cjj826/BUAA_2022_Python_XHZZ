@@ -7,6 +7,7 @@ import sys
 
 import untitled
 from MainWindow.customItem import CustomListWidgetItem
+from MyCalendar import MyCalendar
 from inputDialog import InputDialog
 from mytask import Mytask
 
@@ -95,10 +96,10 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     def addCalendar(self):
         pass
-        # self.calendar = MyCalendar(self.userName)
-        # self.verticalLayout_9.addWidget(self.calendar)
-        # self.verticalLayout_9.addWidget(MyCalendar(self.userName))
-        # self.calendar.show()
+        self.calendar = MyCalendar(self.userName)
+        self.verticalLayout_9.addWidget(self.calendar)
+        self.verticalLayout_9.addWidget(MyCalendar(self.userName))
+        self.calendar.show()
 
     def addAssignment(self):
         #print(self.lineEdit.text())
