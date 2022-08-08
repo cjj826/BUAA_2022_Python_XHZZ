@@ -56,7 +56,7 @@ class CalendarCell(QWidget):
         year, month, day = self.getYearMonthDay(self.calendar, self.dateLabel)
         curDay = "%04d-%02d-%02d" % (year, month, day)
         print(curDay)
-        tasks = Mytask.getTasks(self.userName, isToday=False)  # 只会获取到今日任务
+        tasks = Mytask.getAllTasks(self.userName)  # 只会获取到今日任务
         count = self.missionList.count()
         for i in range(count):
             item = self.missionList.takeItem(0)

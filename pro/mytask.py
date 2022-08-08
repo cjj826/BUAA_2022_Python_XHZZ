@@ -90,7 +90,23 @@ class Mytask:
         return self.taskName
 
     @staticmethod
-    def getTasks(userName, isToday=True, isScheduled = True):
+    def getAllTasks(userName):
+        mysql = MySql()
+        results = mysql.select('user_' + userName, all=True)
+        mysql.closeDataBase()
+        if results == ():
+            return None
+        tasks = []
+        for line in results:
+            task = Mytask(userName=userName, taskName=line[1],
+                          taskType=line[6], startline=line[3], deadline=line[4],
+                          duration=int(line[5]), importance=line[7], content=line[2],
+                          id=line[0], finishToday=line[8])
+            tasks.append(task)
+        return tasks
+
+    @staticmethod
+    def getTasks(userName):
         mysql = MySql()
         results = mysql.select('user_' + userName, all=True)
         mysql.closeDataBase()
@@ -102,23 +118,22 @@ class Mytask:
         print("getResults:", results)
         #获取任务
         for line in results:
-            if isToday:
-                start = list(line[3].split(" "))
-                ddl = list(line[4].split(" "))#a task ddl, [0] is date, [1] is time
-                today = str(datetime.now().strftime("%Y-%m-%d"))
-                time = str(datetime.now().strftime("%H:%M"))
-                if ddl[0] == today or (start[0] <= today and ddl[0] > today):
-                    task = Mytask(userName=userName, taskName=line[1],
-                                  taskType=line[6], startline=line[3], deadline=line[4],
-                                  duration=int(line[5]), importance=line[7], content=line[2],
-                                  id = line[0], finishToday = line[8])
-                    if task.finishToday == today or task.duration == 0:
-                        tasksFinished.append(task)
-                    elif ddl[0] <= today and ddl[1] <= time :
-                        tasksOvertime.append(task)
-                    else :
-                        print("tasksNeed append")
-                        tasksNeed.append(task)
+            start = list(line[3].split(" "))
+            ddl = list(line[4].split(" "))#a task ddl, [0] is date, [1] is time
+            today = str(datetime.now().strftime("%Y-%m-%d"))
+            time = str(datetime.now().strftime("%H:%M"))
+            if ddl[0] == today or (start[0] <= today and ddl[0] > today):
+                task = Mytask(userName=userName, taskName=line[1],
+                              taskType=line[6], startline=line[3], deadline=line[4],
+                              duration=int(line[5]), importance=line[7], content=line[2],
+                              id = line[0], finishToday = line[8])
+                if task.finishToday == today or task.duration == 0:
+                    tasksFinished.append(task)
+                elif ddl[0] <= today and ddl[1] <= time :
+                    tasksOvertime.append(task)
+                else :
+                    print("tasksNeed append")
+                    tasksNeed.append(task)
         #添加任务调度参数
         today = str(datetime.now().date())
         tmpStart = today + " 11:30"
