@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(884, 840)
+        MainWindow.resize(884, 852)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -382,7 +382,7 @@ class Ui_MainWindow(object):
         self.frame_12.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_12.setObjectName("frame_12")
         self.label_24 = QtWidgets.QLabel(self.frame_12)
-        self.label_24.setGeometry(QtCore.QRect(1, 4, 241, 401))
+        self.label_24.setGeometry(QtCore.QRect(1, 4, 241, 611))
         self.label_24.setText("")
         self.label_24.setPixmap(QtGui.QPixmap("../res/side.png"))
         self.label_24.setScaledContents(True)

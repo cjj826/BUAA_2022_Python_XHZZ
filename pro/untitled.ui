@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>884</width>
-    <height>840</height>
+    <height>852</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -668,7 +668,7 @@ QPushButton:pressed{
                   <x>1</x>
                   <y>4</y>
                   <width>241</width>
-                  <height>401</height>
+                  <height>611</height>
                  </rect>
                 </property>
                 <property name="text">
@@ -1635,9 +1635,7 @@ font-family:微软雅黑</string>
   <tabstop>listWidget_4</tabstop>
   <tabstop>listWidget_3</tabstop>
  </tabstops>
- <resources>
-  <include location="../res/new.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>pushButton_8</sender>
