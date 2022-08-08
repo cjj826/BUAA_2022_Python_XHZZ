@@ -27,6 +27,9 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
         self.userName = string
 
     def setTitleAuto(self, string):
+        """通过回车栏内容自动设置标题
+        :param string: 标题
+        """
         self.title.setText(string)
 
     def exit__(self):
@@ -40,17 +43,25 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
         #textEdit用toPlainText
         #time用dataTime().toString
         #combox用currentText
+        stime = list(map(int, self.time.dateTime().toString("HH:mm").split(":")))
+        stime = stime[0] * 60 + stime[1]
         task = Mytask(userName=self.userName,
                       taskName=self.title.text(),
-                      content=self.content.toPlainText(),
+                      taskType=self.type.currentText(),
+                      startline=self.start.dateTime().toString("yyyy-MM-dd HH:mm"),
                       deadline=self.end.dateTime().toString("yyyy-MM-dd HH:mm"),
-                      importance=self.importance.currentText())
+                      duration= stime,
+                      importance=self.importance.currentText(),
+                      content=self.content.toPlainText())
         task.save()
+        print("saved")
         self.close()
+        print("closed")
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     addDialog = AddDialog()
     addDialog.show()
+    print(addDialog.start.dateTime().toString("yyyy-MM-dd HH:mm"))
     sys.exit(app.exec_())
