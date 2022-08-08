@@ -53,9 +53,14 @@ class Mytask:
         self.updateSql()
 
     def updateTask(self, typeName, text):
-        print(text)
         if typeName == "taskName":
             self.taskName = text
+        elif typeName == "taskType":
+            self.taskType = text
+        elif typeName == "startline":
+            self.startline = text
+        elif typeName == "duration":
+            self.duration = text
         elif typeName == "content":
             self.content = text
         elif typeName == "deadline":
