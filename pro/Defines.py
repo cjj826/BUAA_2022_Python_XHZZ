@@ -39,6 +39,7 @@ def yearChangeToAD(year): # 给定年份年转公元纪年
 		return "公元" + str(year) + "年"
 
 
-def font(text, size=12, color="gray", bold="normal"):
+def font(text, size=8, color="gray", bold="normal"):
 	text = "<font style='font-size:" + str(size) + "px; text-align:center; color:" + color + ";font-weight:" + str(bold) + ";'>" + str(text) + "</font><br/>"
+	# text = "<font style='font-size:" + str(10) + "px; text-align:center; color:" + color + ";font-weight:" + str(bold) + ";'>" + str(text) + "</font><br/>"
 	return text

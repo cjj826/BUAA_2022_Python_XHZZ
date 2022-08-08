@@ -100,8 +100,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     def addCalendar(self):
         self.calendar = MyCalendar(self.userName)
-        self.verticalLayout_9.addWidget(self.calendar)
-        self.verticalLayout_9.addWidget(MyCalendar(self.userName))
+        self.calendarVerticalLayout.addWidget(self.calendar)
+        # self.calendarVerticalLayout.addWidget(MyCalendar(self.userName))
         self.calendar.show()
 
     def addAssignment(self):
@@ -166,6 +166,6 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = masterWindow()
-    main_window.setUser("15978757317")
+    main_window.setUser("Zhangkg")
     main_window.show()
     sys.exit(app.exec_())

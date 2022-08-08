@@ -11,8 +11,8 @@ def borderDate(calendar, month, day):  # 选中后加框
 	else:
 		idx = MAX_DAYSinMONTH_TABLE[month - 1] - firstDate + day
 	global selected
-	selected = calendar.labs[idx // 7][idx % 7]
-	selected.setStyleSheet("QWidget{border:3px solid; border-radius: 5px; border-color:#1E90FF}")
+	selected = calendar.labs[idx // 7][idx % 7].getLabel()
+	selected.setStyleSheet("QWidget{border:1px solid; border-radius: 5px; border-color:#1E90FF}")
 
 
 def yearItems(calendar):
@@ -215,33 +215,33 @@ def displayMonth(calendar):
 			if rq == '初一': rq = ymb[yx]
 			# 显示月历
 			if j == 0 and k < blank:  # 上月
-				calendar.labs[j][k].getLabel().setText(font(MAX_DAYSinMONTH_TABLE[i - 1] - blank + k + 1, 20) + font(rq))
+				calendar.labs[j][k].getLabel().setText(font(MAX_DAYSinMONTH_TABLE[i - 1] - blank + k + 1, 10) + font(rq))
 			else:  # 本月
 				if day <= MAX_DAYSinMONTH_TABLE[i]:
 					if year == 1582 and i == 9 and day > 4:
 						if day < 15: continue
-						else: calendar.labs[j + (k - 10) // 7][k - 3].getLabel().setText(font(day, 20, "black", 800) + font(rq))
+						else: calendar.labs[j + (k - 10) // 7][k - 3].getLabel().setText(font(day, 10, "black", 800) + font(rq))
 					else:
-						calendar.labs[j][k].getLabel().setText(font(day, 20, "black", 800) + font(rq))  # "500;font-family:微软雅黑"
+						calendar.labs[j][k].getLabel().setText(font(day, 10, "black", 800) + font(rq))  # "500;font-family:微软雅黑"
 				else:  # 次月
 					if year == 1582 and i == 9:
-						calendar.labs[j + (k - 10) // 7][k - 3].getLabel().setText(font(day - MAX_DAYSinMONTH_TABLE[i], 20) + font(rq))
+						calendar.labs[j + (k - 10) // 7][k - 3].getLabel().setText(font(day - MAX_DAYSinMONTH_TABLE[i], 10) + font(rq))
 						if day - MAX_DAYSinMONTH_TABLE[i] == 11:
 							for m in range(10): calendar.labs[j - 1 + (m + k - 2) // 7][(m + k - 2) % 7].getLabel().setText("")
-					else: calendar.labs[j][k].getLabel().setText(font(day - MAX_DAYSinMONTH_TABLE[i], 20) + font(rq))
+					else: calendar.labs[j][k].getLabel().setText(font(day - MAX_DAYSinMONTH_TABLE[i], 10) + font(rq))
 	# 显示节日
 	qmDay = 0
 	for jq in jqb[i]:  # 节气
 		jqrx = jq[0] + blank - 1
 		if year == 1582 and i == 9: jqrx -= 10
-		calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jq[0], 20, "black", 800) + font(SOLAR_TERMS_TABLE[jq[1]], 12, "red"))
+		calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jq[0], 10, "black", 800) + font(SOLAR_TERMS_TABLE[jq[1]], 8, "red"))
 		if jq[1] == 7: qmDay = jq[0]
 	if year >= 1949:  # 公历节日起始年
-		if qmDay: calendar.labs[(qmDay + blank - 1) // 7][(qmDay + blank - 1) % 7].getLabel().setText(font(qmDay, 20, "red", 800) + font("清明", 12, "red"))
+		if qmDay: calendar.labs[(qmDay + blank - 1) // 7][(qmDay + blank - 1) % 7].getLabel().setText(font(qmDay, 10, "red", 800) + font("清明", 8, "red"))
 		for fes in GREGORIAN_FESTIVALS:
 			if fes[0] == month + 1:
 				jqrx = fes[1] + blank - 1
-				calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(fes[1], 20, "red", 800) + font(fes[2], 12, "red"))
+				calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(fes[1], 10, "red", 800) + font(fes[2], 8, "red"))
 	if year > 1911:  # 农历节日起始年
 		rqx1 = LUNAR_DAY_TABLE.index(rq1)
 		for fes in LUNAR_FRSTIVALS:
@@ -249,13 +249,13 @@ def displayMonth(calendar):
 			jqrx = LUNAR_DAY_TABLE.index(fes[1])
 			if fes[0] == ymb[yx1] and jqrx >= rqx1:  # 该月农历首日
 				jqrx += -rqx1 + blank
-				calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 20, "red", 800) + font(fes[2], 12, "red"))
+				calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 10, "red", 800) + font(fes[2], 8, "red"))
 			elif fes[0] == ymb[yx1+1] and jqrx <= LUNAR_DAY_TABLE.index(rq2):  # 该月农历末日
 				jqrx += DateDiffer(shuoJD[yx1 + 1], shuoJD[yx1]) - rqx1 + blank
-				calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 20, "red", 800) + font(fes[2], 12, "red"))
+				calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 10, "red", 800) + font(fes[2], 8, "red"))
 			elif yx2 - yx1 == 2 and fes[0] == ymb[yx2]:  # 跨2月
 				jqrx += DateDiffer(shuoJD[yx1 + 2], shuoJD[yx1]) - rqx1 + blank
-				if 0 < jqrx <= MAX_DAYSinMONTH_TABLE[i] + blank: calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 20, "red", 800) + font(fes[2], 12, "red"))
+				if 0 < jqrx <= MAX_DAYSinMONTH_TABLE[i] + blank: calendar.labs[jqrx // 7][jqrx % 7].getLabel().setText(font(jqrx - blank + 1, 10, "red", 800) + font(fes[2], 8, "red"))
 			if fes[2] == currentFes: fesDay = jqrx - blank + 1
 
 	for i in range(6):
@@ -263,13 +263,13 @@ def displayMonth(calendar):
 			calendar.labs[i][j].updateMissionsInMissionList()
 	return year, month, fesDay
 
-def displayDate(calendar):
+def displayDate(calendar, init = 0):
 	global selected
 	try:
 		selected.setStyleSheet("")
 	except:
 		pass
-	if calendar.sender() in [None, calendar.buttonToday]:  # 设为今日
+	if calendar.sender() in [None, calendar.buttonToday] or init == 1:  # 设为今日
 		year, month, day = time.localtime(time.time())[0:3]
 		month -= 1
 		calendar.comboBoxCentury.setCurrentIndex(-start_century + year // 100)
@@ -292,7 +292,7 @@ def displayDate(calendar):
 			selected = calendar.sender()
 			if selected.text() == "": return 0  # 1582年被删除的日期
 			day = int(re.findall(r'(\d+)</font>', selected.text())[0])  # 公历日期
-			if not re.search(r"<font style='font-size:20px; text-align:center; color:gray", selected.text()):  # 本月内
+			if not re.search(r"<font style='font-size:10px; text-align:center; color:gray", selected.text()):  # 本月内
 				calendar.sender().setStyleSheet("QLabel{border:3px solid; border-radius: 5px; border-color:#1E90FF}")  # 1E90FF 9400D3
 			else:   # 跳转前后月
 				if day > 20: lastMonth(calendar)
@@ -329,4 +329,4 @@ def displayDate(calendar):
 	rgz = SEXAGENARY_CYCLE_TABLE[math.floor(JD + 8 / 24 + 0.5 + 49) % 60]
 	# JDN、距今、年名、月、星期、日、农历月日、年干支、生肖名、月干支、日干支
 	calendar.labInfo.setText("<br/>JDN {}<br/>{}<br/>{}<br/>{}月 星期{}<br/>{}{}{}年 〖{}〗<br/>{}月 {}日<br/><br/>".format(
-		jdn, font(difference, 12, "black"), nm, month+1, week, font(day, 50, "black"), font(ym+rq, 17, "black"), ngz, sxm, ygz, rgz))
+		jdn, font(difference, 12, "black"), nm, month+1, week, font(day, 12, "black"), font(ym+rq, 12, "black"), ngz, sxm, ygz, rgz))

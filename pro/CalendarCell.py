@@ -3,11 +3,14 @@ import re
 import sys
 
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
 from AddMissionWindow import AddMissionWindow
 from DateLabel import DateLabel
 from MissionList import MissionList
 from PerpetualCalendar import getYearMonth
+from MainWindow.customItem import CustomListWidgetItem
 from mytask import Mytask
 
 
@@ -36,7 +39,7 @@ class CalendarCell(QWidget):
 
         self.setLayout(layout_main)
         # self.setFixedSize(250, 200)
-        self.setStyleSheet("QWidget{border:0px}")
+        self.setStyleSheet("QWidget{border-width: 1px;border-style: solid;border-color: rgb(0, 0, 0);}")
         # self.show()
 
     def getLabel(self):
@@ -70,7 +73,7 @@ class CalendarCell(QWidget):
     def getYearMonthDay(self, calendar, label):
         year, month = getYearMonth(calendar)
         day = int(re.findall(r'(\d+)</font>', label.text())[0])
-        if re.search(r"<font style='font-size:20px; text-align:center; color:gray", label.text()):
+        if re.search(r"<font style='font-size:10px; text-align:center; color:gray", label.text()):
             if day > 20:
                 month = month - 1
             else:
