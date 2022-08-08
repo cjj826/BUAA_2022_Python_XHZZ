@@ -9,6 +9,7 @@ class DateLabel(QLabel):
         super(QLabel, self).__init__(parent)
         self.setFont(QFont("family", 8))
         self.setAlignment(Qt.AlignCenter)
+        # self.setMaximumWidth(80)
 
     def mousePressEvent(self, event):
         if event.buttons() == Qt.LeftButton:

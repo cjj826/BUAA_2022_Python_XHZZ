@@ -4,6 +4,8 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+
+import PerpetualCalendar
 from CalendarCell import CalendarCell
 from ComboBox import ComboBox
 from Defines import *
@@ -13,7 +15,7 @@ from PerpetualCalendar import displayDate, yearItems, jumpYear, jumpMonth, lastM
 
 class MyCalendar(QWidget):
     def __init__(self, userName):
-        super().__init__()
+        super(MyCalendar, self).__init__()
         # self.wnlWidget = QWidget()
         self.userName = userName
         self.setupUI()
@@ -28,11 +30,12 @@ class MyCalendar(QWidget):
         # self.setCentralWidget(self.wnlWidget)
 
         self.calendarUI()
-        displayDate(self)
+        PerpetualCalendar.displayDate(self, init=1)
         # self.show()
 
     def calendarUI(self):
         self.gridWNL = QGridLayout()
+        self.gridWNL.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.gridWNL)
         # self.wnlWidget.setLayout(self.gridWNL)
         self.gridWNL.setSpacing(0)
@@ -62,8 +65,8 @@ class MyCalendar(QWidget):
 
         self.buttonLastYear = QPushButton('<')
         self.buttonNextYear = QPushButton('>')
-        # self.buttonNextYear.setMaximumSize(32, 44)  # set size
-        # self.buttonLastYear.setMaximumSize(32, 44)  # set size
+        self.buttonNextYear.setMaximumSize(10, 12)  # set size
+        self.buttonLastYear.setMaximumSize(10, 12)  # set size
         self.buttonNextYear.clicked.connect(self.thisJumpMonth)
         self.buttonLastYear.clicked.connect(self.thisJumpMonth)
 
@@ -88,8 +91,8 @@ class MyCalendar(QWidget):
         # Last|Next Month Button
         self.buttonLastMonth = QPushButton('<')
         self.buttonNextMonth = QPushButton('>')
-        # self.buttonLastMonth.setMaximumSize(32, 44)
-        # self.buttonNextMonth.setMaximumSize(32, 44)
+        self.buttonLastMonth.setMaximumSize(10, 12)
+        self.buttonNextMonth.setMaximumSize(10, 12)
 
         self.buttonLastMonth.clicked.connect(self.thisJumpMonth)
         self.buttonNextMonth.clicked.connect(self.thisJumpMonth)
@@ -102,7 +105,8 @@ class MyCalendar(QWidget):
 
         ### Today Button
         self.buttonToday = QPushButton()
-        # self.buttonToday.setMaximumWidth(72)
+        self.buttonToday.setText("显示今天")
+        # self.buttonToday.setMaximumWidth(25)
 
         self.buttonToday.clicked.connect(lambda : displayDate(self))
 
@@ -120,6 +124,7 @@ class MyCalendar(QWidget):
 
         for i in range(7):
             self.gridWNL.addWidget(labelWeeks[i], 1, i)
+            labelWeeks[i].setFont(QFont("family", 15))
             # labelWeeks[i].setMaximumHeight(80)
 
         ### Main Calendar Content
@@ -135,10 +140,10 @@ class MyCalendar(QWidget):
                 # self.labs[i][j].getMissionList().clicked.connect(lambda : ) TODO
                 self.gridWNL.addWidget(self.labs[i][j], i + 2, j)
         ## make it tighter
-        for i in range(6):
-            self.gridWNL.setRowStretch(i + 2, 1)
-        for j in range(7):
-            self.gridWNL.setColumnStretch(j, 1)
+        # for i in range(6):
+        #     self.gridWNL.setRowStretch(i + 2, 1)
+        # for j in range(7):
+        #     self.gridWNL.setColumnStretch(j, 1)
         self.gridWNL.setContentsMargins(20, 0, 20, 0)
         self.gridWNL.setSpacing(0)
 
@@ -158,7 +163,7 @@ class MyCalendar(QWidget):
 
         ### Calendar information
         self.labInfo = QLabel()
-        self.labInfo.setStyleSheet("QLabel{ font:14px;}")
+        self.labInfo.setStyleSheet("QLabel{ font:10px;}")
         self.labInfo.setAlignment(Qt.AlignHCenter)
         self.labInfo.setContentsMargins(0, 6, 5, 6)
         self.labInfo.setWordWrap(True)
@@ -189,6 +194,6 @@ class MyCalendar(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    cell = MyCalendar('15978757317')
+    cell = MyCalendar('Zhangkg')
     cell.show()
     sys.exit(app.exec_())

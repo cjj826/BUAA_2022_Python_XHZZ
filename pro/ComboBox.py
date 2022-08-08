@@ -10,9 +10,9 @@ class ComboBox(QComboBox):
         super(ComboBox, self).__init__(parent)
         self.setEditable(True)
         self.setView(QListView())
-        self.setFixedHeight(44)
-        self.setStyleSheet("QComboBox {font: 30px} "
-                           "QComboBox QAbstractItemView::item {min-height: 40px; min-width: 100px; }")
+        # self.setFixedHeight(44)
+        # self.setStyleSheet("QComboBox {font: 10px} "
+        #                    "QComboBox QAbstractItemView::item {min-height: 14px; min-width: 100px; }")
         self.view().setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
 
     def wheelEvent(self, event):

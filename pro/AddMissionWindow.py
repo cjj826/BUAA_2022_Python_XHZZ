@@ -3,8 +3,11 @@ import sys
 
 from MissionList import MissionList
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from DateLabel import DateLabel
 from MainWindow.customItem import CustomListWidgetItem
+from addDialog import AddDialog
 from inputDialog import InputDialog
 from mytask import Mytask
 from PerpetualCalendar import *
@@ -18,7 +21,7 @@ class AddMissionWindow(QWidget):
     def getYearMonthDay(self, calendar, label):
         year, month = getYearMonth(calendar)
         day = int(re.findall(r'(\d+)</font>', label.text())[0])
-        if re.search(r"<font style='font-size:20px; text-align:center; color:gray", label.text()):
+        if re.search(r"<font style='font-size:10px; text-align:center; color:gray", label.text()):
             if day > 20:
                 month = month - 1
             else:
@@ -56,14 +59,27 @@ class AddMissionWindow(QWidget):
 
     def addAssignment(self):
         # print(self.lineEdit.text())
-        self.INPUT = InputDialog()
+        # self.INPUT = InputDialog()
+        # self.INPUT.setTitleAuto(self.lineEdit.text())
+        # self.INPUT.setUserName(self.userName)
+        # self.INPUT.exec_()
+        #
+        # if self.INPUT.set == True:
+        #     l = [self.INPUT.titleLable.text(), self.INPUT.contentLable.text(),
+        #          self.INPUT.dateLable.text(), self.INPUT.importanceLable.text()]
+        #     print(l)
+        #     self.updateListWidget()
+        self.INPUT = AddDialog()
         self.INPUT.setTitleAuto(self.lineEdit.text())
         self.INPUT.setUserName(self.userName)
         self.INPUT.exec_()
 
         if self.INPUT.set == True:
-            l = [self.INPUT.titleLable.text(), self.INPUT.contentLable.text(),
-                 self.INPUT.dateLable.text(), self.INPUT.importanceLable.text()]
+            l = [self.INPUT.title.text(), self.INPUT.type.currentText(),
+                 self.INPUT.start.dateTime().toString("yyyy-MM-dd HH:mm"),
+                 self.INPUT.end.dateTime().toString("yyyy-MM-dd HH:mm"),
+                 self.INPUT.time.time().toString("yyyy-MM-dd HH:mm"),
+                 self.INPUT.content.toPlainText(), self.INPUT.importance.currentText()]
             print(l)
             self.updateListWidget()
 
