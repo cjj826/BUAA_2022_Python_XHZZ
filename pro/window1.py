@@ -108,8 +108,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.title.setText(task.taskName)
 
         self.type.setCurrentText(task.taskType)
-        self.start.setDateTime(datetime.strptime(task.startline, "%Y-%m-%d %H:%M"))
-        self.end.setDateTime(datetime.strptime(task.deadline, "%Y-%m-%d %H:%M"))
+        self.start.setDateTime(datetime.datetime.strptime(task.startline, "%Y-%m-%d %H:%M"))
+        self.end.setDateTime(datetime.datetime.strptime(task.deadline, "%Y-%m-%d %H:%M"))
         hour = task.duration / 60
         minute = task.duration % 60
         self.time.setDateTime(QDateTime(1,1,1, hour, minute))

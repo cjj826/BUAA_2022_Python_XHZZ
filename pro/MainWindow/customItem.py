@@ -101,7 +101,7 @@ def minutes2ShowTime(minutes):
     """将分钟数转化为 时:分
     """
     hour = str(int(minutes // 60))
-    minutes = minutes % 60
+    minutes = int(minutes % 60)
     if minutes < 10:
         minutes = "0" + str(minutes)
     else :

@@ -47,6 +47,7 @@ class Mytask:
                 self.duration = self.duration - (self.sc_endTime - self.sc_startTime)
                 if self.duration < 0:
                     self.duration = 0
+                self.finishToday = str(datetime.now().date())
             self.reserve_freeTime = self.sc_freeEndTime - self.sc_endTime
         else :
             self.duration = 0
@@ -72,7 +73,7 @@ class Mytask:
         print("updateHas")
         mysql = MySql()
         dic = {'taskName': self.taskName, 'content': self.content, 'startline': self.startline,
-               'deadline': self.deadline, 'duration': str(self.duration), 'taskType': self.taskType,
+               'deadline': self.deadline, 'duration': str(int(self.duration)), 'taskType': self.taskType,
                'importance': self.importance, 'finishToday': self.finishToday}
         mysql.update("user_" + self.userName, dic, {"id" : self.id})
         mysql.closeDataBase()
@@ -113,7 +114,7 @@ class Mytask:
                                   id = line[0], finishToday = line[8])
                     if task.finishToday == today or task.duration == 0:
                         tasksFinished.append(task)
-                    elif ddl[1] <= time :
+                    elif ddl[0] <= today and ddl[1] <= time :
                         tasksOvertime.append(task)
                     else :
                         print("tasksNeed append")
@@ -142,7 +143,7 @@ class Mytask:
                 ddlDate = datetime.strptime(ddl[0], "%Y-%m-%d").date()
                 nowDate = datetime.now().date()
                 days = (ddlDate - nowDate).days + 1
-                task.runTime = task.duration / days
+                task.runTime = task.duration // days
                 task.endTime = ENDOFDAY
         tasksNeed.sort(key=functools.cmp_to_key(sortTaskInStartTime))
         #tasksFinished.sort(key=functools.cmp_to_key(sortTaskInDeadline))
@@ -161,7 +162,7 @@ class Mytask:
         """
         mysql = MySql()
         dic = {'taskName': self.taskName, 'content': self.content, 'startline':self.startline,
-               'deadline': self.deadline, 'duration':str(self.duration), 'taskType':self.taskType,
+               'deadline': self.deadline, 'duration':str(int(self.duration)), 'taskType':self.taskType,
                'importance': self.importance, 'finishToday':self.finishToday}
         mysql.insert('user_' + self.userName, dic)
         mysql.closeDataBase()
@@ -290,6 +291,7 @@ def sortTaskInStartTime(self, other):
 MAX_FREE_RATE = 3
 ENDOFDAY = 60 * 23 + 59#23:59
 if __name__ == "__main__":
-    task = Mytask("1234", "123", "运动", "2022-8-8 11:20", "2022-8-8 13:20",
-                  0, "重要","123", id=2)
-    task.updateSql()
+    task = Mytask("1234", "123", "运动", "2022-8-8 11:20", "2022-8-10 13:20",
+                  840, "重要","123", id=1)
+
+    task.setFinished(mode=0)
