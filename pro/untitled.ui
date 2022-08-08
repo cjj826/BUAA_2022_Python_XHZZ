@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(107, 150, 137);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_9">
     <item>
@@ -146,8 +149,8 @@
                <rect>
                 <x>150</x>
                 <y>0</y>
-                <width>60</width>
-                <height>30</height>
+                <width>41</width>
+                <height>31</height>
                </rect>
               </property>
               <property name="text">
@@ -182,14 +185,33 @@
              <widget class="QLabel" name="label_11">
               <property name="geometry">
                <rect>
-                <x>80</x>
-                <y>48</y>
-                <width>300</width>
-                <height>15</height>
+                <x>200</x>
+                <y>0</y>
+                <width>331</width>
+                <height>31</height>
                </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font-size:24px</string>
               </property>
               <property name="text">
                <string>2022-07-30 16:55:40 星期日</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_25">
+              <property name="geometry">
+               <rect>
+                <x>80</x>
+                <y>40</y>
+                <width>431</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font-size:24px</string>
+              </property>
+              <property name="text">
+               <string>每日签名：你管努力，剩下的交给时间。</string>
               </property>
              </widget>
             </widget>
@@ -640,6 +662,25 @@ QPushButton:pressed{
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
+               <widget class="QLabel" name="label_24">
+                <property name="geometry">
+                 <rect>
+                  <x>1</x>
+                  <y>4</y>
+                  <width>241</width>
+                  <height>401</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap>../res/side.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </widget>
              </item>
             </layout>
@@ -695,7 +736,7 @@ QPushButton:pressed{
               <number>0</number>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="page">
               <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -900,7 +941,48 @@ font-family:微软雅黑</string>
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="page_4"/>
+             <widget class="QWidget" name="page_4">
+              <layout class="QHBoxLayout" name="horizontalLayout_19">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_12">
+                 <item>
+                  <widget class="QGroupBox" name="groupBox">
+                   <property name="styleSheet">
+                    <string notr="true">border: none;</string>
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_18">
+                   <item>
+                    <widget class="QGroupBox" name="groupBox_2">
+                     <property name="styleSheet">
+                      <string notr="true">border: none;</string>
+                     </property>
+                     <property name="title">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QGroupBox" name="groupBox_3">
+                     <property name="styleSheet">
+                      <string notr="true">border: none;</string>
+                     </property>
+                     <property name="title">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
            <item>
@@ -1553,7 +1635,9 @@ font-family:微软雅黑</string>
   <tabstop>listWidget_4</tabstop>
   <tabstop>listWidget_3</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../res/new.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_8</sender>

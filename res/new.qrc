@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="new">
+    <file>back.jpg</file>
     <file>胡歌.png</file>
     <file>退出.png</file>
     <file>窗口最小化.png</file>
