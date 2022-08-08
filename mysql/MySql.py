@@ -101,7 +101,10 @@ class MySql():
         value = []
         for k, v in params.items():
             key.append(k)
-            value.append('\'' + v + '\'')
+            if isinstance(v, str):
+                value.append('\'' + v + '\'')
+            else :
+                value.append(v)
         sql = 'insert into %s' % table
         sql += '(' + ','.join(key) + ')' + ' values(' + ','.join(value) + ')'
         print('insert:' + sql)
