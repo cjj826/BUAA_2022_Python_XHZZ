@@ -163,7 +163,7 @@ class MyCalendar(QWidget):
 
         ### Calendar information
         self.labInfo = QLabel()
-        self.labInfo.setStyleSheet("QLabel{ font:10px;}")
+        self.labInfo.setStyleSheet("QLabel{ font:11px;}")
         self.labInfo.setAlignment(Qt.AlignHCenter)
         self.labInfo.setContentsMargins(0, 6, 5, 6)
         self.labInfo.setWordWrap(True)
@@ -194,6 +194,6 @@ class MyCalendar(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    cell = MyCalendar('Zhangkg')
+    cell = MyCalendar('123456')
     cell.show()
     sys.exit(app.exec_())

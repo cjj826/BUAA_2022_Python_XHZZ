@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-#
 import sys
 
+import Defines
 from MissionList import MissionList
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -21,7 +22,7 @@ class AddMissionWindow(QWidget):
     def getYearMonthDay(self, calendar, label):
         year, month = getYearMonth(calendar)
         day = int(re.findall(r'(\d+)</font>', label.text())[0])
-        if re.search(r"<font style='font-size:10px; text-align:center; color:gray", label.text()):
+        if re.search(r"<font style='font-size:%dpx; text-align:center; color:gray"%(Defines.LABEL_SIZE), label.text()):
             if day > 20:
                 month = month - 1
             else:
@@ -84,19 +85,53 @@ class AddMissionWindow(QWidget):
             self.updateListWidget()
 
     def updateListWidget(self):
-        tasks = Mytask.getTasks(self.userName, isToday=False)#只会获取到今日任务
+        # tasks = Mytask.getAllTasks(self.userName)#只会获取到今日任务
+        # count = self.listWidget.count()
+        # for i in range(count):
+        #     item = self.listWidget.takeItem(0)
+        #     del item
+        # if tasks is None:
+        #     return
+        # if len(tasks) == 0:
+        #     return
+        # for task in tasks:
+        #     if str(task.getDeadline()).split(' ')[0] != self.dateLabel.text():
+        #         continue
+        #     item = CustomListWidgetItem(task, self)
+        #     self.listWidget.addItem(item)
+        #     self.listWidget.setItemWidget(item,item.widget)
+        tasksNeed, tasksFinished, tasksOvertime = Mytask.getAllTasks(self.userName, self.dateLabel.text())  # 只会获取到今日任务
+        print("hhh")
         count = self.listWidget.count()
         for i in range(count):
             item = self.listWidget.takeItem(0)
             del item
-        if tasks is None:
-            return
-        for task in tasks:
-            if str(task.getDeadline()).split(' ')[0] != self.dateLabel.text():
-                continue
-            item = CustomListWidgetItem(task)
+
+        for i, task in enumerate(tasksNeed):
+            if i == 0:
+                item = CustomListWidgetItem(task, self, mode=0, firstItem=True)
+            else:
+                item = CustomListWidgetItem(task, self, mode=0, firstItem=False)
             self.listWidget.addItem(item)
-            self.listWidget.setItemWidget(item,item.widget)
+            self.listWidget.setItemWidget(item, item.widget)
+
+        if len(tasksFinished) != 0:
+            item = CustomListWidgetItem(None, self, mode=1, firstItem=True)
+            self.listWidget.addItem(item)
+            self.listWidget.setItemWidget(item, item.widget)
+        for task in tasksFinished:
+            item = CustomListWidgetItem(task, self, mode=1)
+            self.listWidget.addItem(item)
+            self.listWidget.setItemWidget(item, item.widget)
+
+        if len(tasksOvertime) != 0:
+            item = CustomListWidgetItem(None, self, mode=2, firstItem=True)
+            self.listWidget.addItem(item)
+            self.listWidget.setItemWidget(item, item.widget)
+        for task in tasksOvertime:
+            item = CustomListWidgetItem(task, self, mode=2)
+            self.listWidget.addItem(item)
+            self.listWidget.setItemWidget(item, item.widget)
 
 
 if __name__ == '__main__':

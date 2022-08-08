@@ -90,20 +90,84 @@ class Mytask:
         return self.taskName
 
     @staticmethod
-    def getAllTasks(userName):
+    def getAllTasks(userName, dateText):
+        # mysql = MySql()
+        # results = mysql.select('user_' + userName, all=True)
+        # mysql.closeDataBase()
+        # if results == ():
+        #     return None
+        # tasks = []
+        # for line in results:
+        #     task = Mytask(userName=userName, taskName=line[1],
+        #                   taskType=line[6], startline=line[3], deadline=line[4],
+        #                   duration=int(line[5]), importance=line[7], content=line[2],
+        #                   id=line[0], finishToday=line[8])
+        #     tasks.append(task)
+        # return tasks
         mysql = MySql()
         results = mysql.select('user_' + userName, all=True)
         mysql.closeDataBase()
+        tasksNeed = []
+        tasksOvertime = []
+        tasksFinished = []
         if results == ():
-            return None
-        tasks = []
+            return tasksNeed, tasksFinished, tasksOvertime
+        print("getResults:", results)
+        # 获取任务
         for line in results:
-            task = Mytask(userName=userName, taskName=line[1],
-                          taskType=line[6], startline=line[3], deadline=line[4],
-                          duration=int(line[5]), importance=line[7], content=line[2],
-                          id=line[0], finishToday=line[8])
-            tasks.append(task)
-        return tasks
+            start = list(line[3].split(" "))
+            ddl = list(line[4].split(" "))  # a task ddl, [0] is date, [1] is time
+            today = dateText
+            time = "00:00"
+            if ddl[0] == today or (start[0] <= today and ddl[0] > today):
+                task = Mytask(userName=userName, taskName=line[1],
+                              taskType=line[6], startline=line[3], deadline=line[4],
+                              duration=int(line[5]), importance=line[7], content=line[2],
+                              id=line[0], finishToday=line[8])
+                if task.finishToday == today or task.duration == 0:
+                    tasksFinished.append(task)
+                elif ddl[0] <= today and ddl[1] <= time:
+                    tasksOvertime.append(task)
+                else:
+                    print("tasksNeed append")
+                    tasksNeed.append(task)
+        # 添加任务调度参数
+        today = str(datetime.now().date())
+        tmpStart = today + " 11:30"
+        tmpEnd = today + " 2:00"
+        tmp = Mytask(userName, "午休tmp", "娱乐", tmpStart, tmpEnd, 60, "不重要", None, id=-1)
+        tasksNeed.append(tmp)
+        for task in tasksNeed:
+            # 任务的开始时间，start[0]为日期，start[1]为时刻
+            start = list(task.startline.split(" "))
+            ddl = list(task.deadline.split(" "))
+            start_time = list(map(int, start[1].split(":")))
+            ddl_time = list(map(int, ddl[1].split(":")))
+            # startTime为任务的可以开始时间，endTime为可以结束时间
+            if start[0] != today:
+                task.startTime = 6 * 60
+            else:
+                task.startTime = start_time[0] * 60 + start_time[1]
+            if ddl[0] == today:
+                task.endTime = ddl_time[0] * 60 + ddl_time[1]
+                task.runTime = task.duration
+            else:  # 跨度多天的任务
+                ddlDate = datetime.strptime(ddl[0], "%Y-%m-%d").date()
+                nowDate = datetime.now().date()
+                days = (ddlDate - nowDate).days + 1
+                task.runTime = task.duration // days
+                task.endTime = ENDOFDAY
+        tasksNeed.sort(key=functools.cmp_to_key(sortTaskInStartTime))
+        # tasksFinished.sort(key=functools.cmp_to_key(sortTaskInDeadline))
+        tasksOvertime.sort(key=functools.cmp_to_key(sortTaskInDeadline))
+        if len(tasksNeed) != 0:
+            tasksNeed = autoSchedule(tasksNeed)
+        tasksNeed.remove(tmp)
+        print("get tasks:", end="")
+        for task in tasksNeed:
+            print(task.taskName, end="")
+        print()
+        return tasksNeed, tasksFinished, tasksOvertime
 
     @staticmethod
     def getTasks(userName):

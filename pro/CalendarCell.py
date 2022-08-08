@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
+import Defines
 from AddMissionWindow import AddMissionWindow
 from DateLabel import DateLabel
 from MissionList import MissionList
@@ -39,7 +40,7 @@ class CalendarCell(QWidget):
 
         self.setLayout(layout_main)
         #self.setFixedSize(250, 200)
-        self.setStyleSheet("QWidget{border:0px}")
+        self.setStyleSheet("QWidget{border-width: 1px;border-style: solid;border-color: rgb(0, 0, 0);}")
         # self.show()
 
     def getLabel(self):
@@ -56,12 +57,21 @@ class CalendarCell(QWidget):
         year, month, day = self.getYearMonthDay(self.calendar, self.dateLabel)
         curDay = "%04d-%02d-%02d" % (year, month, day)
         print(curDay)
-        tasks = Mytask.getAllTasks(self.userName)  # 只会获取到今日任务
+        tasksNeed, tasksFinished, tasksOvertime = Mytask.getAllTasks(self.userName, curDay)  # 只会获取到今日任务
         count = self.missionList.count()
         for i in range(count):
             item = self.missionList.takeItem(0)
             del item
+        tasks = []
+        for task in tasksNeed:
+            tasks.append(task)
+        for task in tasksFinished:
+            tasks.append(task)
+        for task in tasksOvertime:
+            tasks.append(task)
         if tasks is None:
+            return
+        if len(tasks) == 0:
             return
         data = {'Name':""}
         for task in tasks:
@@ -73,7 +83,7 @@ class CalendarCell(QWidget):
     def getYearMonthDay(self, calendar, label):
         year, month = getYearMonth(calendar)
         day = int(re.findall(r'(\d+)</font>', label.text())[0])
-        if re.search(r"<font style='font-size:10px; text-align:center; color:gray", label.text()):
+        if re.search(r"<font style='font-size:%dpx; text-align:center; color:gray"%(Defines.LABEL_SIZE), label.text()):
             if day > 20:
                 month = month - 1
             else:

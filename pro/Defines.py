@@ -27,6 +27,7 @@ setYear = ''
 startCentury = -13
 endCentury = 30
 start_century = startCentury if startCentury <= 0 else startCentury - 1
+LABEL_SIZE=11
 
 def yearChangeToAD(year): # 给定年份年转公元纪年
 	if year == 0:
