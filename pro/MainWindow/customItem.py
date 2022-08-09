@@ -50,9 +50,11 @@ class CustomListWidgetItem(QListWidgetItem):
             self.layout_main.setStretch(1, 2)#(index, value)
         elif mode == 1:#finished
             if firstItem:
+                self.widget.setStyleSheet("border-bottom:1px solid grey;")
                 self.tipLabel = QLabel("已完成任务")
                 self.layout_main.addWidget(self.tipLabel)
             else :
+                self.widget.setStyleSheet("color:grey")
                 self.titleLabel.setText(task.taskName)
                 self.checkBox.setChecked(True)
                 self.state.setText("已完成")
@@ -64,14 +66,21 @@ class CustomListWidgetItem(QListWidgetItem):
                 self.layout_main.setStretch(1, 2)#(index, value)
         elif mode == 2 :#overtime
             if firstItem:
+                self.widget.setStyleSheet("border-bottom:1px solid grey;")
                 self.tipLabel = QLabel("已过期任务")
                 self.layout_main.addWidget(self.tipLabel)
             else:
+                #self.widget.setStyleSheet("color:red;")
+                #self.widget.setStyleSheet("text-decoration:line-through;")
                 self.titleLabel.setText(task.taskName)
                 self.timetip = QLabel("截止时间: ")
                 self.time.setText(task.deadline.split(" ")[1])
                 self.state.setText("已过期")
                 self.taskType.setText(task.taskType)
+                self.timetip.setStyleSheet("color:red;")
+                self.time.setStyleSheet("color:red;")
+                self.state.setStyleSheet("color:red;")
+                self.taskType.setStyleSheet("color:red;")
                 self.layout_main.addWidget(self.checkBox)
                 self.layout_main.addWidget(self.titleLabel)
                 self.layout_main.addWidget(self.timetip)
