@@ -40,7 +40,8 @@ class CalendarCell(QWidget):
 
 
         self.setLayout(layout_main)
-        #self.setFixedSize(250, 200)
+        # self.setFixedSize(250, 200)
+        self.setMinimumHeight(65)
         self.setStyleSheet("QWidget{border-width: 1px;border-style: solid;border-color: rgb(0, 0, 0);}")
         # self.show()
 

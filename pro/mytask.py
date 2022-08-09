@@ -149,7 +149,8 @@ class Mytask:
                     print("tasksNeed append")
                     tasksNeed.append(task)
         # 添加任务调度参数
-        today = str(datetime.now().date())
+        # today = str(datetime.now().date())
+        today = dateText
         tmpStart = today + " 11:30"
         tmpEnd = today + " 2:00"
         tmp = Mytask(userName, "午休tmp", "娱乐", tmpStart, tmpEnd, 60, "不重要", None, id=-1)
@@ -170,7 +171,8 @@ class Mytask:
                 task.runTime = task.duration
             else:  # 跨度多天的任务
                 ddlDate = datetime.strptime(ddl[0], "%Y-%m-%d").date()
-                nowDate = datetime.now().date()
+                # nowDate = datetime.now().date()
+                nowDate = datetime.strptime(dateText, "%Y-%m-%d").date()
                 days = (ddlDate - nowDate).days + 1
                 task.runTime = task.duration // days
                 task.endTime = ENDOFDAY
