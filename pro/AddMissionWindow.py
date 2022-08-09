@@ -13,6 +13,7 @@ from addDialog import AddDialog
 from inputDialog import InputDialog
 from mytask import Mytask
 from PerpetualCalendar import *
+import datetime
 
 
 class AddMissionWindow(QWidget):
@@ -62,17 +63,6 @@ class AddMissionWindow(QWidget):
         self.setLayout(layout_main)
 
     def addAssignment(self):
-        # print(self.lineEdit.text())
-        # self.INPUT = InputDialog()
-        # self.INPUT.setTitleAuto(self.lineEdit.text())
-        # self.INPUT.setUserName(self.userName)
-        # self.INPUT.exec_()
-        #
-        # if self.INPUT.set == True:
-        #     l = [self.INPUT.titleLable.text(), self.INPUT.contentLable.text(),
-        #          self.INPUT.dateLable.text(), self.INPUT.importanceLable.text()]
-        #     print(l)
-        #     self.updateListWidget()
         self.INPUT = AddDialog()
         self.INPUT.setTitleAuto(self.lineEdit.text())
         self.INPUT.setUserName(self.userName)
@@ -89,23 +79,7 @@ class AddMissionWindow(QWidget):
         PerpetualCalendar.displayMonth(self.calendar)
 
     def updateListWidget(self):
-        # tasks = Mytask.getAllTasks(self.userName)#只会获取到今日任务
-        # count = self.listWidget.count()
-        # for i in range(count):
-        #     item = self.listWidget.takeItem(0)
-        #     del item
-        # if tasks is None:
-        #     return
-        # if len(tasks) == 0:
-        #     return
-        # for task in tasks:
-        #     if str(task.getDeadline()).split(' ')[0] != self.dateLabel.text():
-        #         continue
-        #     item = CustomListWidgetItem(task, self)
-        #     self.listWidget.addItem(item)
-        #     self.listWidget.setItemWidget(item,item.widget)
         tasksNeed, tasksFinished, tasksOvertime = Mytask.getAllTasks(self.userName, self.dateLabel.text())  # 只会获取到今日任务
-        print("hhh")
         count = self.listWidget.count()
         for i in range(count):
             item = self.listWidget.takeItem(0)
@@ -120,34 +94,42 @@ class AddMissionWindow(QWidget):
             self.listWidget.setItemWidget(item, item.widget)
             item.widget.disconnect()
             item.widget.clicked.connect(lambda : self.mainWindow.showSider(item.task))
+            self.setTaskState(item, mode=0)
             # item.widget.clicked.connect(lambda : )
 
-        if len(tasksFinished) != 0:
-            item = CustomListWidgetItem(None, self, mode=1, firstItem=True)
-            self.listWidget.addItem(item)
-            self.listWidget.setItemWidget(item, item.widget)
-            item.widget.disconnect()
-            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
         for task in tasksFinished:
             item = CustomListWidgetItem(task, self, mode=1)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
             item.widget.disconnect()
             item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
+            self.setTaskState(item, mode=1)
 
-        if len(tasksOvertime) != 0:
-            item = CustomListWidgetItem(None, self, mode=2, firstItem=True)
-            self.listWidget.addItem(item)
-            self.listWidget.setItemWidget(item, item.widget)
-            item.widget.disconnect()
-            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
         for task in tasksOvertime:
             item = CustomListWidgetItem(task, self, mode=2)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
             item.widget.disconnect()
             item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
+            self.setTaskState(item, mode=2)
 
+    def setTaskState(self, item, mode = 0):
+        today = datetime.date.today()
+        label_date = datetime.date(self.year, self.month, self.day)
+        if label_date.__eq__(today):
+            return
+        if mode == 0 or mode == 1:
+            # task need
+            if today < label_date:
+                item.state.setText(" 未开始")
+            else:
+                item.state.setText("已完成")
+        elif mode == 2:
+            # task overtime
+            if today < label_date:
+                item.state.setText(" 未开始")
+            else:
+                item.state.setText("已过期")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
