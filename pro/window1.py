@@ -221,9 +221,14 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
 
-    #历史数据分析
+    #历史数据分析，任务类别
     def getData3(self):
-        num = [15,10,7,6]
+        tasks = Mytask.getAllTasks(self.userName, timeSpan)
+        dic = {"运动":0, "学习":0, "娱乐":0, "生活":0}
+        for task in tasks:
+            #一个任务的开始时间在foredate之后，在nowdate之前，即算进来
+                dic[task.taskType] += 1
+        num = [dic["运动"], dic["学习"], dic["娱乐"], dic["生活"]]
         return num
 
     def printBar(self):
@@ -237,7 +242,14 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.LineFigure.ax.barh(range(len(num_list)), num_list, tick_label = ['运动','学习','娱乐','生活'], color=['red', 'green', 'blue', 'purple'])
 
     def getData2(self):
-        data = np.array([35, 25, 15])
+        tasks = Mytask.getAllTasks(self.userName, timeSpan)
+        dic = {"已完成":0, "未完成":0}
+        for task in tasks:
+            if task.duration <= 0:
+                dic["已完成"] += 1
+            else :
+                dic["未完成"] += 1
+        data = np.array([dic["已完成"], dic["未完成"]])
         return data
 
     def printCircle(self):
@@ -246,18 +258,27 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.LineFigureLayout.addWidget(self.LineFigure)  # 将画板添加到布局
 
         ydata = self.getData2()
-        self.LineFigure.ax.pie(ydata, labels=['未开始','已完成','过期'],
-                               colors=["#d5695d", "#65a479", "#a564c9"],  # 设置饼图颜色
-                                explode=(0, 0, 0.1), # 第二部分突出显示，值越大，距离中心越远
+        self.LineFigure.ax.pie(ydata, labels=['已完成','未完成'],
+                               colors=["#65a479", "#d5695d"],  # 设置饼图颜色
+                                explode=(0, 0.1), # 第二部分突出显示，值越大，距离中心越远
                                 autopct='%.2f%%', # 格式化输出百分比
                                )
         self.LineFigure.ax.set_title("任务完成情况", fontdict={'size': 16})
 
     def getData1(self):
         timedelta = datetime.timedelta(days=1)
-        startdate = datetime.date.today() - 7 * timedelta #过去一周，不包括今天
+        today = datetime.datetime.today()
+        startdate = today - 7 * timedelta #过去一周，不包括今天
         xdate = [startdate + i * timedelta for i in range(DAYS)]
-        ydata = [7, 5, 6, 4, 8, 10, 5]
+        tasks = Mytask.getAllTasks(self.userName, timeSpan)
+        ydata = [0 for i in range(timeSpan)]
+        for task in tasks:
+            deadline = task.deadline.split(" ")[0]
+            deaddate = datetime.datetime.strptime(deadline, "%Y-%m-%d")
+            day = (today - deaddate).days
+            if day < 0:
+                continue
+            ydata[timeSpan - day - 1] += 1
         return xdate, ydata
 
     def printLine(self):
@@ -291,7 +312,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.LineFigure.ax.legend(loc='best', fontsize=12, frameon=False, ncol=1)
 
 
-
+timeSpan = 7
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = masterWindow()

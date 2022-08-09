@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timedelta
 import functools
 
 from mysql.MySql import MySql
@@ -90,14 +91,27 @@ class Mytask:
         return self.taskName
 
     @staticmethod
-    def getAllTasks(userName):
+    def getAllTasks(userName, timeSpan = None):
+        """
+        获取所有任务
+
+        :param timeSpan: 时间期限，获取今日到今日之前多少天的数据
+        """
         mysql = MySql()
         results = mysql.select('user_' + userName, all=True)
         mysql.closeDataBase()
         if results == ():
             return None
         tasks = []
+        if timeSpan is not None:
+            nowdate = datetime.now().date()
+            delta = timedelta(days=timeSpan)
+            foredate = nowdate - delta
         for line in results:
+            if timeSpan is not None:
+                start = line[3].split(" ")[0]
+                if not (start > str(foredate) and start <= str(nowdate)):
+                    continue
             task = Mytask(userName=userName, taskName=line[1],
                           taskType=line[6], startline=line[3], deadline=line[4],
                           duration=int(line[5]), importance=line[7], content=line[2],
