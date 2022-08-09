@@ -267,7 +267,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     def getData1(self):
         timedelta = datetime.timedelta(days=1)
-        today = datetime.datetime.today()
+        today = datetime.date.today()
+        today2 = datetime.datetime.today()
         startdate = today - 7 * timedelta #过去一周，不包括今天
         xdate = [startdate + i * timedelta for i in range(DAYS)]
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
@@ -275,8 +276,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         for task in tasks:
             deadline = task.deadline.split(" ")[0]
             deaddate = datetime.datetime.strptime(deadline, "%Y-%m-%d")
-            day = (today - deaddate).days - 1
-            if day < 0:
+            day = (today2 - deaddate).days - 1
+            if day < 0 or task.duration != 0:
                 continue
             ydata[timeSpan - day - 1] += 1
         return xdate, ydata
