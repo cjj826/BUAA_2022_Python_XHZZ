@@ -295,6 +295,6 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = masterWindow()
-    main_window.setUser("Zhangkg")
+    main_window.setUser("18839173859")
     main_window.show()
     sys.exit(app.exec_())
