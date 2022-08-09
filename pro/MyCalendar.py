@@ -165,13 +165,13 @@ class MyCalendar(QWidget):
 
         ### Calendar information
         self.labInfo = QLabel()
-        self.labInfo.setStyleSheet("QLabel{ font:11px;}")
+        self.labInfo.setStyleSheet("QLabel{ font:15px;}")
         self.labInfo.setAlignment(Qt.AlignHCenter)
         self.labInfo.setContentsMargins(0, 6, 5, 6)
         self.labInfo.setWordWrap(True)
         # self.labInfo.setFixedWidth(250)
-        self.gridWNL.addLayout(self.hlayGL, 0, 7, 1, 1)
-        self.gridWNL.addWidget(self.labInfo, 1, 7, 7, 1)
+        self.gridWNL.addLayout(self.hlayGL, 0, 7)
+        self.gridWNL.addWidget(self.labInfo, 1, 7, 7, 7)
 
     def thisJumpMonth(self):
         if self.sender() == self.buttonLastMonth:
