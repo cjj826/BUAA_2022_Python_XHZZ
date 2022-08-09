@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QDateTimeEdit
 
 import addAssignment
 from mytask import Mytask
-
+import datetime
 #title, type, start, end, time, importance, content
 
 class AddDialog(addAssignment.Ui_dialog, QDialog):
@@ -22,7 +22,13 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
 
         self.confirmButton.clicked.connect(self.confirm)
         self.cancelButton.clicked.connect(self.exit__)
-
+        self.checkBox.stateChanged.connect(self.setDailyTask)
+        self.dailyTask = False
+    def setDailyTask(self):
+        if self.checkBox.isChecked():
+            self.dailyTask = True
+        else:
+            self.dailyTask = False
     def setUserName(self, string):
         self.userName = string
 
@@ -45,18 +51,35 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
         #combox用currentText
         stime = list(map(int, self.time.dateTime().toString("HH:mm").split(":")))
         stime = stime[0] * 60 + stime[1]
-        task = Mytask(userName=self.userName,
-                      taskName=self.title.text(),
-                      taskType=self.type.currentText(),
-                      startline=self.start.dateTime().toString("yyyy-MM-dd HH:mm"),
-                      deadline=self.end.dateTime().toString("yyyy-MM-dd HH:mm"),
-                      duration= stime,
-                      importance=self.importance.currentText(),
-                      content=self.content.toPlainText())
-        task.save()
-        print("saved")
+        if not self.dailyTask:
+            task = Mytask(userName=self.userName,
+                          taskName=self.title.text(),
+                          taskType=self.type.currentText(),
+                          startline=self.start.dateTime().toString("yyyy-MM-dd HH:mm"),
+                          deadline=self.end.dateTime().toString("yyyy-MM-dd HH:mm"),
+                          duration= stime,
+                          importance=self.importance.currentText(),
+                          content=self.content.toPlainText())
+            task.save()
+        else :
+            start = self.start.dateTime().toString("yyyy-MM-dd")
+            end = self.end.dateTime().toString("yyyy-MM-dd")
+            start = datetime.datetime.strptime(start, "%Y-%m-%d")
+            end = datetime.datetime.strptime(end, "%Y-%m-%d")
+            days = (end - start).days
+            for i in range(days):
+                delta = datetime.timedelta(days=i)
+                day = start + delta
+                task = Mytask(userName=self.userName,
+                          taskName=self.title.text(),
+                          taskType=self.type.currentText(),
+                          startline=day.strftime("%Y-%m-%d") + " " + self.start.dateTime().toString("HH:mm"),
+                          deadline=day.strftime("%Y-%m-%d") + " " +self.end.dateTime().toString("HH:mm"),
+                          duration= stime,
+                          importance=self.importance.currentText(),
+                          content=self.content.toPlainText())
+                task.save()
         self.close()
-        print("closed")
 
 
 if __name__ == '__main__':

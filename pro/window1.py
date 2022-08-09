@@ -275,7 +275,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         for task in tasks:
             deadline = task.deadline.split(" ")[0]
             deaddate = datetime.datetime.strptime(deadline, "%Y-%m-%d")
-            day = (today - deaddate).days
+            day = (today - deaddate).days - 1
             if day < 0:
                 continue
             ydata[timeSpan - day - 1] += 1

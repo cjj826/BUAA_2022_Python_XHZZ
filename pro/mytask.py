@@ -110,7 +110,7 @@ class Mytask:
         for line in results:
             if timeSpan is not None:
                 start = line[3].split(" ")[0]
-                if not (start > str(foredate) and start <= str(nowdate)):
+                if not (start >= str(foredate) and start < str(nowdate)):
                     continue
             task = Mytask(userName=userName, taskName=line[1],
                           taskType=line[6], startline=line[3], deadline=line[4],
