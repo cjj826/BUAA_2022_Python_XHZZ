@@ -1,8 +1,9 @@
 import re
 
 from PyQt5.QtCore import QDateTime
-from datetime import  datetime
+import datetime
 
-now = datetime.today().hour * 60 + datetime.today().minute
-
-print(now)
+nowdate = datetime.datetime.now().date()
+delta = datetime.timedelta(days=7)
+foredate = nowdate - delta
+print(nowdate - foredate)

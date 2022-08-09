@@ -196,6 +196,6 @@ class MyCalendar(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    cell = MyCalendar('123456')
+    cell = MyCalendar('321')
     cell.show()
     sys.exit(app.exec_())
