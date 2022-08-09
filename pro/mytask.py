@@ -304,13 +304,11 @@ def scheduleTask(tasks, free_rate):
     scheduledTasks = []#已经被调度的任务
     beginIndex = 0
     startTime = tasks[0].startTime + Mytask.reserve_freeTime
-    print("len is", len(tasks))
     while beginIndex < len(tasks):
         startTime = max(startTime, tasks[beginIndex].startTime)
         #寻找可以开始的任务，之前找过的任务不再去找，任务已经按startTime排序了
         for i in range(beginIndex, len(tasks)):
             if tasks[i].startTime <= startTime:
-                print("i is", i)
                 canBeginTasks.append(tasks[i])
             else:
                 beginIndex = i
