@@ -223,7 +223,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     #历史数据分析，任务类别
     def getData3(self):
-        tasks = Mytask.getAllTasks(self.userName, timeSpan)
+        tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         dic = {"运动":0, "学习":0, "娱乐":0, "生活":0}
         for task in tasks:
             #一个任务的开始时间在foredate之后，在nowdate之前，即算进来
@@ -242,7 +242,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.LineFigure.ax.barh(range(len(num_list)), num_list, tick_label = ['运动','学习','娱乐','生活'], color=['red', 'green', 'blue', 'purple'])
 
     def getData2(self):
-        tasks = Mytask.getAllTasks(self.userName, timeSpan)
+        tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         dic = {"已完成":0, "未完成":0}
         for task in tasks:
             if task.duration <= 0:
@@ -270,7 +270,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         today = datetime.datetime.today()
         startdate = today - 7 * timedelta #过去一周，不包括今天
         xdate = [startdate + i * timedelta for i in range(DAYS)]
-        tasks = Mytask.getAllTasks(self.userName, timeSpan)
+        tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         ydata = [0 for i in range(timeSpan)]
         for task in tasks:
             deadline = task.deadline.split(" ")[0]
@@ -316,6 +316,6 @@ timeSpan = 7
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = masterWindow()
-    main_window.setUser("Zhangkg")
+    main_window.setUser("18839173859")
     main_window.show()
     sys.exit(app.exec_())
