@@ -4,6 +4,7 @@ from PyQt5.QtCore import QTimer, QDateTime
 import sys
 import re
 import DateTime
+import PerpetualCalendar
 import untitled
 from MainWindow.customItem import CustomListWidgetItem
 from MyCalendar import MyCalendar
@@ -137,8 +138,9 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
 
     def addCalendar(self):
-        self.calendar = MyCalendar(self.userName)
+        self.calendar = MyCalendar(self.userName, mainWindow=self)
         self.calendarVerticalLayout.addWidget(self.calendar)
+        self.pushButton_2.clicked.connect(lambda: PerpetualCalendar.displayMonth(self.calendar))
         # self.calendarVerticalLayout.addWidget(MyCalendar(self.userName))
         self.calendar.show()
 

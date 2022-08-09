@@ -16,11 +16,12 @@ from mytask import Mytask
 
 
 class CalendarCell(QWidget):
-    def __init__(self, userName, calendar):
+    def __init__(self, userName, calendar, mainWindow=None):
         super(CalendarCell, self).__init__()
         self.userName = userName
         self.initUI()
         self.calendar = calendar
+        self.mainWindow=mainWindow
     def initUI(self):
         layout_main = QVBoxLayout()
 
@@ -50,7 +51,7 @@ class CalendarCell(QWidget):
         return self.missionList
 
     def showAddMissionWindow(self, calendar, label):
-        self.addMissionWindow = AddMissionWindow(self.userName, calendar, label, None, None)
+        self.addMissionWindow = AddMissionWindow(self.userName, calendar, label, None, None, mainWindow=self.mainWindow)
         self.addMissionWindow.show()
 
     def updateMissionsInMissionList(self):

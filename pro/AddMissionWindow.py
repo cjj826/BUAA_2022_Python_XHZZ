@@ -2,6 +2,7 @@
 import sys
 
 import Defines
+import PerpetualCalendar
 from MissionList import MissionList
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -15,8 +16,9 @@ from PerpetualCalendar import *
 
 
 class AddMissionWindow(QWidget):
-    def __init__(self, username, calendar, label, cellDateLabel: DateLabel, cellMissionList: MissionList):
+    def __init__(self, username, calendar, label, cellDateLabel: DateLabel, cellMissionList: MissionList, mainWindow=None):
         super(AddMissionWindow, self).__init__()
+        self.mainWindow = mainWindow
         self.initWindow(username, calendar, label, cellDateLabel, cellMissionList)
 
     def getYearMonthDay(self, calendar, label):
@@ -38,6 +40,7 @@ class AddMissionWindow(QWidget):
 
     def initWindow(self, username, calendar, label, cellDateLabel: DateLabel, cellMissionList: MissionList):
         layout_main = QVBoxLayout()
+        self.calendar = calendar
         self.userName = username
         self.dateLabel = DateLabel()
         self.year, self.month, self.day = self.getYearMonthDay(calendar, label)
@@ -83,6 +86,7 @@ class AddMissionWindow(QWidget):
                  self.INPUT.content.toPlainText(), self.INPUT.importance.currentText()]
             print(l)
             self.updateListWidget()
+        PerpetualCalendar.displayMonth(self.calendar)
 
     def updateListWidget(self):
         # tasks = Mytask.getAllTasks(self.userName)#只会获取到今日任务
@@ -114,24 +118,35 @@ class AddMissionWindow(QWidget):
                 item = CustomListWidgetItem(task, self, mode=0, firstItem=False)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
+            item.widget.disconnect()
+            item.widget.clicked.connect(lambda : self.mainWindow.showSider(item.task))
+            # item.widget.clicked.connect(lambda : )
 
         if len(tasksFinished) != 0:
             item = CustomListWidgetItem(None, self, mode=1, firstItem=True)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
+            item.widget.disconnect()
+            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
         for task in tasksFinished:
             item = CustomListWidgetItem(task, self, mode=1)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
+            item.widget.disconnect()
+            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
 
         if len(tasksOvertime) != 0:
             item = CustomListWidgetItem(None, self, mode=2, firstItem=True)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
+            item.widget.disconnect()
+            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
         for task in tasksOvertime:
             item = CustomListWidgetItem(task, self, mode=2)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
+            item.widget.disconnect()
+            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
 
 
 if __name__ == '__main__':

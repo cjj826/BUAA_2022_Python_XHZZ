@@ -14,11 +14,13 @@ from PerpetualCalendar import displayDate, yearItems, jumpYear, jumpMonth, lastM
 
 
 class MyCalendar(QWidget):
-    def __init__(self, userName):
+    def __init__(self, userName, mainWindow=None):
         super(MyCalendar, self).__init__()
         # self.wnlWidget = QWidget()
         self.userName = userName
+        self.mainWindow = mainWindow
         self.setupUI()
+
 
 
     def setupUI(self):
@@ -132,9 +134,9 @@ class MyCalendar(QWidget):
         for i in range(6):
             for j in range(7):
                 if j == 0:
-                    self.labs.append([CalendarCell(self.userName, self)])
+                    self.labs.append([CalendarCell(self.userName, self, self.mainWindow)])
                 else:
-                    self.labs[i].append(CalendarCell(self.userName, self))
+                    self.labs[i].append(CalendarCell(self.userName, self, self.mainWindow))
                 # self.labs[i][j].setFixedSize(350, 300)
                 self.labs[i][j].getLabel().clicked.connect(lambda : displayDate(self))
                 # self.labs[i][j].getMissionList().clicked.connect(lambda : ) TODO
