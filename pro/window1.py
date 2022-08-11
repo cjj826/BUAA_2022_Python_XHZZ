@@ -191,7 +191,6 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     def updateListWidget(self):
         tasksNeed, tasksFinished, tasksOvertime = Mytask.getTasks(self.userName)#只会获取到今日任务
-        print("hhh")
         count = self.listWidget.count()
         for i in range(count):
             item = self.listWidget.takeItem(0)

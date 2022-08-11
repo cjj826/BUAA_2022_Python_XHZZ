@@ -33,6 +33,7 @@ class CustomListWidgetItem(QListWidgetItem):
         self.layout_main = QHBoxLayout()
         if mode == 0:
             self.titleLabel.setText(task.taskName)
+            print(task.taskName, task.sc_startTime, task.sc_endTime)
             timeshow = minutes2ShowTime(task.sc_startTime)
             timeshow += " - " + minutes2ShowTime(task.sc_endTime)
             self.time.setText(timeshow)

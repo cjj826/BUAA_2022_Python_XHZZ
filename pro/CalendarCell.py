@@ -58,7 +58,6 @@ class CalendarCell(QWidget):
     def updateMissionsInMissionList(self):
         year, month, day = self.getYearMonthDay(self.calendar, self.dateLabel)
         curDay = "%04d-%02d-%02d" % (year, month, day)
-        print(curDay)
         tasksNeed, tasksFinished, tasksOvertime = Mytask.getAllTasks(self.userName, curDay)  # 只会获取到今日任务
         count = self.missionList.count()
         for i in range(count):
