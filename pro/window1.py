@@ -166,18 +166,6 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         timedisplay=time.toString("yyyy-MM-dd hh:mm:ss dddd")#格式化一下时间
         self.label_11.setText(timedisplay)
 
-    # def updateFirstItem(self):
-    #     count = self.listWidget.count()
-    #     if count == 0:
-    #         return
-    #     item = self.listWidget.item(0)
-    #     task = CustomListWidgetItem.firstTask
-    #     print(task.taskName)
-    #     self.listWidget.removeItemWidget(item)
-    #     item =  CustomListWidgetItem(task, self, mode=0, firstItem=True)
-    #     self.listWidget.insertItem(0, item)
-    #     self.listWidget.setItemWidget(item, item.widget)
-
     def display_page1(self):
         self.stackedWidget.setCurrentIndex(0)
         # self.updateFirstItem()

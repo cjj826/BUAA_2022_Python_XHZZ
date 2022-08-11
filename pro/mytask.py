@@ -319,7 +319,7 @@ def scheduleTask(tasks, free_rate):
             if free_rate != 0 and nowTask.id != -1:#id为-1则为午睡，午睡不要影响调度
                 return False
             else :
-                #如果实在不满足，则调度截止时间仍未结束时间
+                #如果实在不满足，则调度截止时间仍为结束时间
                 nowTask.sc_endTime = nowTask.endTime
                 nowTask.sc_freeEndTime = nowTask.endTime
         scheduledTasks.append(nowTask)
