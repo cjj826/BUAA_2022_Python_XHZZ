@@ -10,6 +10,7 @@ from mytask import Mytask
 class CustomListWidgetItem(QListWidgetItem):
     count = 0
     clicked = pyqtSignal()
+    # firstTask = None
     def __init__(self, task : Mytask, window, mode = 0, firstItem = False):#0 is taskNeed, 1 is finished, 2 is overtime
         """创建任务列表项
 
@@ -33,7 +34,6 @@ class CustomListWidgetItem(QListWidgetItem):
         self.layout_main = QHBoxLayout()
         if mode == 0:
             self.titleLabel.setText(task.taskName)
-            print(task.taskName, task.sc_startTime, task.sc_endTime)
             timeshow = minutes2ShowTime(task.sc_startTime)
             timeshow += " - " + minutes2ShowTime(task.sc_endTime)
             self.time.setText(timeshow)
@@ -42,6 +42,8 @@ class CustomListWidgetItem(QListWidgetItem):
                 self.state.setText("正在进行")
             else :
                 self.state.setText(" 未开始")
+            # if firstItem:
+            #     self.firstTask = self.task
             self.taskType.setText(task.taskType)
             self.layout_main.addWidget(self.checkBox)
             self.layout_main.addWidget(self.titleLabel)

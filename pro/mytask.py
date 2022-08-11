@@ -177,8 +177,8 @@ class Mytask:
         tasksNeed.sort(key=functools.cmp_to_key(sortTaskInStartTime))
         # tasksFinished.sort(key=functools.cmp_to_key(sortTaskInDeadline))
         tasksOvertime.sort(key=functools.cmp_to_key(sortTaskInDeadline))
-        if len(tasksNeed) != 0:
-            tasksNeed = autoSchedule(tasksNeed)
+        # if len(tasksNeed) != 0:
+        #     tasksNeed = autoSchedule(tasksNeed)
         tasksNeed.remove(tmp)
         return tasksNeed, tasksFinished, tasksOvertime
 
@@ -298,10 +298,10 @@ def scheduleTask(tasks, free_rate):
     # 已经被调度的任务
     scheduledTasks = []
     beginIndex = 0
-    startTime = tasks[0].startTime + Mytask.reserve_freeTime
+    startTime = tasks[0].startTime
     while beginIndex < len(tasks):
         startTime = max(startTime, tasks[beginIndex].startTime)
-        #寻找可以开始的任务，之前找过的任务不再去找，任务已经按startTime排序了
+        #寻找可以开始的任务
         for i in range(beginIndex, len(tasks)):
             if tasks[i].startTime <= startTime:
                 canBeginTasks.append(tasks[i])
@@ -310,7 +310,7 @@ def scheduleTask(tasks, free_rate):
                 break
         else :
             beginIndex = len(tasks)
-        canBeginTasks.sort(key=functools.cmp_to_key(sortTaskInEndTime))
+        canBeginTasks.sort(key=functools.cmp_to_key(sortTaskInEDF))
         nowTask = canBeginTasks.pop(0)
         nowTask.sc_startTime = startTime
         nowTask.sc_endTime = nowTask.sc_startTime + nowTask.runTime
@@ -340,9 +340,9 @@ def scheduleTask(tasks, free_rate):
         startTime = nowTask.sc_freeEndTime
     return scheduledTasks
 
-def sortTaskInEndTime(self, other):
-    selfTime = self.endTime - self.startTime
-    otherTime = other.endTime - other.startTime
+def sortTaskInEDF(self:Mytask, other:Mytask):
+    selfTime = self.endTime - self.runTime
+    otherTime = other.endTime - other.runTime
     if selfTime > otherTime:
         return 1
     elif selfTime < otherTime:
