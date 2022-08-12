@@ -129,7 +129,6 @@ class Mytask:
         tasksFinished = []
         if results == ():
             return tasksNeed, tasksFinished, tasksOvertime
-        print("getResults:", results)
         # 获取任务
         for line in results:
             start = list(line[3].split(" "))
@@ -146,13 +145,12 @@ class Mytask:
                 elif ddl[0] <= today and ddl[1] <= time:
                     tasksOvertime.append(task)
                 else:
-                    print("tasksNeed append")
                     tasksNeed.append(task)
         # 添加任务调度参数
         # today = str(datetime.now().date())
         today = dateText
         tmpStart = today + " 11:30"
-        tmpEnd = today + " 2:00"
+        tmpEnd = today + " 14:00"
         tmp = Mytask(userName, "午休tmp", "娱乐", tmpStart, tmpEnd, 60, "不重要", None, id=-1)
         tasksNeed.append(tmp)
         for task in tasksNeed:
@@ -179,13 +177,9 @@ class Mytask:
         tasksNeed.sort(key=functools.cmp_to_key(sortTaskInStartTime))
         # tasksFinished.sort(key=functools.cmp_to_key(sortTaskInDeadline))
         tasksOvertime.sort(key=functools.cmp_to_key(sortTaskInDeadline))
-        if len(tasksNeed) != 0:
-            tasksNeed = autoSchedule(tasksNeed)
+        # if len(tasksNeed) != 0:
+        #     tasksNeed = autoSchedule(tasksNeed)
         tasksNeed.remove(tmp)
-        print("get tasks:", end="")
-        for task in tasksNeed:
-            print(task.taskName, end="")
-        print()
         return tasksNeed, tasksFinished, tasksOvertime
 
 
@@ -194,12 +188,10 @@ class Mytask:
         mysql = MySql()
         results = mysql.select('user_' + userName, all=True)
         mysql.closeDataBase()
-        tasksNeed = []
-        tasksOvertime = []
-        tasksFinished = []
+        tasksNeed, tasksOvertime, tasksFinished = [], [], []
         if results == ():
-            return tasksNeed, tasksFinished, tasksOvertime
-        print("getResults:", results)
+            return [], [], []
+        #print("getResults:", results)
         #获取任务
         for line in results:
             start = list(line[3].split(" "))
@@ -216,14 +208,14 @@ class Mytask:
                 elif ddl[0] <= today and ddl[1] <= time :
                     tasksOvertime.append(task)
                 else :
-                    print("tasksNeed append")
                     tasksNeed.append(task)
-        #添加任务调度参数
+        #将午休当做任务进行调度
         today = str(datetime.now().date())
-        tmpStart = today + " 11:30"
-        tmpEnd = today + " 2:00"
-        tmp = Mytask(userName, "午休tmp", "娱乐", tmpStart, tmpEnd, 60, "不重要", None, id = -1)
+        mid_start = today + " 11:30"
+        mid_end = today + " 14:00"
+        tmp = Mytask(userName, "午休tmp", "娱乐", mid_start, mid_end, 60, "不重要", None, id = -1)
         tasksNeed.append(tmp)
+        #添加任务调度参数
         for task in tasksNeed:
             #任务的开始时间，start[0]为日期，start[1]为时刻
             start = list(task.startline.split(" "))
@@ -235,6 +227,7 @@ class Mytask:
                 task.startTime = 6 * 60
             else:
                 task.startTime = start_time[0] * 60 + start_time[1]
+            #print("task %s startTime %s" %(task.taskName, task.startTime))
             if ddl[0] == today:
                 task.endTime = ddl_time[0]*60 + ddl_time[1]
                 task.runTime = task.duration
@@ -245,15 +238,14 @@ class Mytask:
                 task.runTime = task.duration // days
                 task.endTime = ENDOFDAY
         tasksNeed.sort(key=functools.cmp_to_key(sortTaskInStartTime))
-        #tasksFinished.sort(key=functools.cmp_to_key(sortTaskInDeadline))
         tasksOvertime.sort(key=functools.cmp_to_key(sortTaskInDeadline))
         if len(tasksNeed) != 0:
             tasksNeed = autoSchedule(tasksNeed)
         tasksNeed.remove(tmp)
-        print("get tasks:", end="")
-        for task in tasksNeed:
-            print(task.taskName, end="")
-        print()
+        # print("get tasks:", end="")
+        # for task in tasksNeed:
+        #     print(task.taskName, end="")
+        # print()
         return tasksNeed, tasksFinished, tasksOvertime
 
     def save(self):
@@ -301,14 +293,15 @@ def autoSchedule(tasks):
     return res
 
 def scheduleTask(tasks, free_rate):
-    nowTime = datetime.today().hour * 60+ datetime.today().minute
-    canBeginTasks = []#可以开始的任务，按绝对截止时间排序
-    scheduledTasks = []#已经被调度的任务
+    # 可以开始的任务，按绝对截止时间排序
+    canBeginTasks = []
+    # 已经被调度的任务
+    scheduledTasks = []
     beginIndex = 0
-    startTime = tasks[0].startTime + Mytask.reserve_freeTime
+    startTime = tasks[0].startTime
     while beginIndex < len(tasks):
         startTime = max(startTime, tasks[beginIndex].startTime)
-        #寻找可以开始的任务，之前找过的任务不再去找，任务已经按startTime排序了
+        #寻找可以开始的任务
         for i in range(beginIndex, len(tasks)):
             if tasks[i].startTime <= startTime:
                 canBeginTasks.append(tasks[i])
@@ -317,7 +310,7 @@ def scheduleTask(tasks, free_rate):
                 break
         else :
             beginIndex = len(tasks)
-        canBeginTasks.sort(key=functools.cmp_to_key(sortTaskInEndTime))
+        canBeginTasks.sort(key=functools.cmp_to_key(sortTaskInEDF))
         nowTask = canBeginTasks.pop(0)
         nowTask.sc_startTime = startTime
         nowTask.sc_endTime = nowTask.sc_startTime + nowTask.runTime
@@ -326,7 +319,7 @@ def scheduleTask(tasks, free_rate):
             if free_rate != 0 and nowTask.id != -1:#id为-1则为午睡，午睡不要影响调度
                 return False
             else :
-                #如果实在不满足，则调度截止时间仍未结束时间
+                #如果实在不满足，则调度截止时间仍为结束时间
                 nowTask.sc_endTime = nowTask.endTime
                 nowTask.sc_freeEndTime = nowTask.endTime
         scheduledTasks.append(nowTask)
@@ -347,9 +340,9 @@ def scheduleTask(tasks, free_rate):
         startTime = nowTask.sc_freeEndTime
     return scheduledTasks
 
-def sortTaskInEndTime(self, other):
-    selfTime = self.endTime - self.startTime
-    otherTime = other.endTime - other.startTime
+def sortTaskInEDF(self:Mytask, other:Mytask):
+    selfTime = self.endTime - self.runTime
+    otherTime = other.endTime - other.runTime
     if selfTime > otherTime:
         return 1
     elif selfTime < otherTime:

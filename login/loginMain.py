@@ -32,13 +32,10 @@ class loginWorkStation(Ui_MainWindow):
     def loginsuccess(self):
         print("login success")
         self.main_window = masterWindow()
-        print("kkk")
         self.main_window.setUser(self.userName)
         self.main_window.addCalendar()
-        # self.calendar = MyCalendar()
         self.main_window.show()
         self.loginwindow.close()
-        pass
 
     def tryLogin(self):
         username = str(self.lineEdit.text())
@@ -82,7 +79,7 @@ class loginWorkStation(Ui_MainWindow):
         mysql = MySql()
         results = mysql.select('sc_user', listnames=['username'])
         for name in results:
-            # 重复注册
+            # 检查是否重复注册
             if name[0] == username:
                 self.showLabel(self.label_5)
                 self.lineEdit_5.clear()
