@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>884</width>
-    <height>852</height>
+    <width>1118</width>
+    <height>978</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -40,7 +40,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>40</height>
+          <height>100</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -80,6 +80,9 @@
                <width>100</width>
                <height>100</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>GO FOR IT</string>
              </property>
              <property name="styleSheet">
               <string notr="true"/>
@@ -211,7 +214,7 @@
                <string notr="true">font-size:24px</string>
               </property>
               <property name="text">
-               <string>每日签名：你管努力，剩下的交给时间。</string>
+               <string>每日签名：你只管努力，剩下的交给时间。</string>
               </property>
              </widget>
             </widget>
@@ -241,6 +244,9 @@
              </property>
              <property name="mouseTracking">
               <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string notr="true" comment="编辑" extracomment="编辑头像"/>
              </property>
              <property name="toolTipDuration">
               <number>-1</number>
@@ -273,6 +279,9 @@
                    <width>16777215</width>
                    <height>100</height>
                   </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>最小化</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton{
@@ -309,6 +318,9 @@ QPushButton:pressed{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="toolTip">
+                  <string>最大化</string>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton{
 	font-family:微软雅黑;
@@ -343,6 +355,9 @@ QPushButton:pressed{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="toolTip">
+                  <string>退出</string>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton{
 	font-family:微软雅黑;
@@ -373,6 +388,12 @@ QPushButton:pressed{
              </item>
              <item>
               <widget class="QFrame" name="frame_11">
+               <property name="maximumSize">
+                <size>
+                 <width>90</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(245, 245, 245);</string>
                </property>
@@ -382,6 +403,39 @@ QPushButton:pressed{
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_21">
+                <item>
+                 <widget class="QPushButton" name="pushButton_3">
+                  <property name="maximumSize">
+                   <size>
+                    <width>90</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>上传头像</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	font-family:微软雅黑;
+	background-color: rgb(248, 248, 248);
+}
+QPushButton:hover{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+}
+QPushButton:pressed{
+	font-family:微软雅黑;
+	background-color: rgb(233, 237, 238);
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>上传</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -532,47 +586,6 @@ QPushButton:pressed{
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_3">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>120</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-	font-family:微软雅黑;
-	background-color: rgb(248, 248, 248);
-	border: none;
-}
-QPushButton:hover{
-	font-family:微软雅黑;
-	background-color: rgb(233, 237, 238);
-	border: none;
-}
-QPushButton:pressed{
-	font-family:微软雅黑;
-	background-color: rgb(233, 237, 238);
-	border: none;
-}
-</string>
-               </property>
-               <property name="text">
-                <string>任务检索</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../res/搜索类目-fill.png</normaloff>../res/搜索类目-fill.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="pushButton_4">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -668,7 +681,7 @@ QPushButton:pressed{
                   <x>1</x>
                   <y>4</y>
                   <width>241</width>
-                  <height>611</height>
+                  <height>620</height>
                  </rect>
                 </property>
                 <property name="text">
@@ -849,98 +862,6 @@ font-family:微软雅黑</string>
               </layout>
              </widget>
              <widget class="QWidget" name="page_5"/>
-             <widget class="QWidget" name="page_2">
-              <layout class="QGridLayout" name="gridLayout">
-               <item row="0" column="1">
-                <widget class="QFrame" name="frame_7">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_4">
-                  <item>
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>重要不紧急</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QListWidget" name="listWidget_3"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QFrame" name="frame_8">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_6">
-                  <item>
-                   <widget class="QLabel" name="label_3">
-                    <property name="text">
-                     <string>紧急不重要</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QListWidget" name="listWidget_4"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QFrame" name="frame_9">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_7">
-                  <item>
-                   <widget class="QLabel" name="label_4">
-                    <property name="text">
-                     <string>不重要不紧急</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QListWidget" name="listWidget_5"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QFrame" name="frame_6">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_5">
-                  <item>
-                   <widget class="QLabel" name="label">
-                    <property name="text">
-                     <string>重要紧急</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QListWidget" name="listWidget_2"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
              <widget class="QWidget" name="page_4">
               <layout class="QHBoxLayout" name="horizontalLayout_19">
                <item>
@@ -980,6 +901,29 @@ font-family:微软雅黑</string>
                   </layout>
                  </item>
                 </layout>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="page_2">
+              <layout class="QHBoxLayout" name="horizontalLayout_20">
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="maximumSize">
+                  <size>
+                   <width>430</width>
+                   <height>410</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap>../res/敬请期待2.png</pixmap>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>true</bool>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -1611,7 +1555,7 @@ font-family:微软雅黑</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>884</width>
+     <width>1118</width>
      <height>26</height>
     </rect>
    </property>
@@ -1621,7 +1565,6 @@ font-family:微软雅黑</string>
  <tabstops>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton</tabstop>
@@ -1630,10 +1573,6 @@ font-family:微软雅黑</string>
   <tabstop>pushButton_6</tabstop>
   <tabstop>pushButton_7</tabstop>
   <tabstop>pushButton_8</tabstop>
-  <tabstop>listWidget_5</tabstop>
-  <tabstop>listWidget_2</tabstop>
-  <tabstop>listWidget_4</tabstop>
-  <tabstop>listWidget_3</tabstop>
  </tabstops>
  <resources/>
  <connections>
