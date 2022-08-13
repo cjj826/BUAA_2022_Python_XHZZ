@@ -61,7 +61,7 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
             end = self.end.dateTime().toString("yyyy-MM-dd")
             start = datetime.datetime.strptime(start, "%Y-%m-%d")
             end = datetime.datetime.strptime(end, "%Y-%m-%d")
-            days = (end - start).days
+            days = (end - start).days + 1
             for i in range(days):
                 delta = datetime.timedelta(days=i)
                 day = start + delta
