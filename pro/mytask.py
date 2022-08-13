@@ -38,7 +38,7 @@ class Mytask:
         self.finishToday = finishToday#今天的任务是否完成
 
     #任务完成
-    def setFinished(self, mode = 0):#0为正常，2为过期完成（多天任务不会过期）
+    def setFinished(self, mode = 0):#0为任务正常完成，2为任务过期后完成
         if mode == 0:
             #当天任务
             if self.deadline.split(" ")[0] == str(datetime.now().strftime("%Y-%m-%d")):

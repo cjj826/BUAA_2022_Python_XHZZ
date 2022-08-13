@@ -78,6 +78,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     def update_taskName(self):
         self.showingTask.updateTask("taskName", self.title.text())
+
     def update_taskType(self):
         self.showingTask.updateTask("taskType", self.type.currentText())
 
