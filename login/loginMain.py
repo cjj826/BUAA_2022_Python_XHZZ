@@ -6,8 +6,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore
 from login.loginMainWindow import Ui_MainWindow
 from mytask import Mytask
-from MyCalendar import MyCalendar
-
 
 class loginWorkStation(Ui_MainWindow):
     def __init__(self, window):

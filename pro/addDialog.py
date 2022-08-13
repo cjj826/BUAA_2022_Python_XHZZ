@@ -44,11 +44,6 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
 
     def confirm(self):
         self.set = True
-        print("add Assign!")
-        #LineEdit用text
-        #textEdit用toPlainText
-        #time用dataTime().toString
-        #combox用currentText
         stime = list(map(int, self.time.dateTime().toString("HH:mm").split(":")))
         stime = stime[0] * 60 + stime[1]
         if not self.dailyTask:
@@ -66,7 +61,7 @@ class AddDialog(addAssignment.Ui_dialog, QDialog):
             end = self.end.dateTime().toString("yyyy-MM-dd")
             start = datetime.datetime.strptime(start, "%Y-%m-%d")
             end = datetime.datetime.strptime(end, "%Y-%m-%d")
-            days = (end - start).days
+            days = (end - start).days + 1
             for i in range(days):
                 delta = datetime.timedelta(days=i)
                 day = start + delta

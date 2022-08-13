@@ -1,16 +1,11 @@
-from IPython.external.qt_for_kernel import QtCore
-from PyQt5.QtCore import QTimer, QDateTime
+from PyQt5.QtCore import QDateTime
 
-
-import sys
-import re
-import requests
 import subprocess
 
+from PyQt5.QtGui import QIcon
 from pyqt5_plugins.examplebutton import QtWidgets
 from pyqt5_plugins.examplebuttonplugin import QtGui
 
-import DateTime
 import PerpetualCalendar
 import untitled
 from MainWindow.customItem import CustomListWidgetItem
@@ -21,7 +16,7 @@ from mytask import Mytask
 DAYS = 7 #过去7天
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QFileDialog
 from PyQt5.QtCore import QTimer
-import sys, time
+import sys
 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -46,6 +41,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         super(masterWindow, self).__init__(parent)
         self.setupUi(self)
         self.stackedWidget.setCurrentIndex(0)
+        self.setWindowIcon(QIcon('../res/logo-1.png'))
+        self.setWindowTitle("小航专注")
 
         #进行信号与槽的链接按钮
         self.pushButton.clicked.connect(self.display_page1)
@@ -119,6 +116,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
     def update_taskName(self):
         self.showingTask.updateTask("taskName", self.title.text())
+
     def update_taskType(self):
         self.showingTask.updateTask("taskType", self.type.currentText())
 
@@ -190,6 +188,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         """
         self.INPUT = AddDialog()#新建一个对话框窗口，新建任务
         self.INPUT.setTitleAuto(self.lineEdit.text())
+        self.lineEdit.clear()
         self.INPUT.setUserName(self.userName)
         self.INPUT.exec_()
 
@@ -265,6 +264,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def getData3(self):
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         dic = {"运动":0, "学习":0, "娱乐":0, "生活":0}
+        if tasks is None or tasks == []:
+            return [0, 0, 0, 0]
         for task in tasks:
             #一个任务的开始时间在foredate之后，在nowdate之前，即算进来
                 dic[task.taskType] += 1
@@ -284,11 +285,14 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def getData2(self):
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         dic = {"已完成":0, "未完成":0}
+        if tasks is None or tasks == []:
+            return np.array([0,1])
         for task in tasks:
             if task.duration <= 0:
                 dic["已完成"] += 1
             else :
                 dic["未完成"] += 1
+
         data = np.array([dic["已完成"], dic["未完成"]])
         return data
 
@@ -313,6 +317,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         xdate = [startdate + i * timedelta for i in range(DAYS)]
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         ydata = [0 for i in range(timeSpan)]
+        if tasks is None or tasks == []:
+            return xdate, ydata
         for task in tasks:
             deadline = task.deadline.split(" ")[0]
             deaddate = datetime.datetime.strptime(deadline, "%Y-%m-%d")

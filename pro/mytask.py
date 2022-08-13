@@ -38,7 +38,7 @@ class Mytask:
         self.finishToday = finishToday#今天的任务是否完成
 
     #任务完成
-    def setFinished(self, mode = 0):#0为正常，2为过期完成（多天任务不会过期）
+    def setFinished(self, mode = 0):#0为任务正常完成，2为任务过期后完成
         if mode == 0:
             #当天任务
             if self.deadline.split(" ")[0] == str(datetime.now().strftime("%Y-%m-%d")):
@@ -300,7 +300,8 @@ def scheduleTask(tasks, free_rate):
     beginIndex = 0
     startTime = tasks[0].startTime
     while beginIndex < len(tasks):
-        startTime = max(startTime, tasks[beginIndex].startTime)
+        if len(canBeginTasks) == 0:
+            startTime = max(startTime, tasks[beginIndex].startTime)
         #寻找可以开始的任务
         for i in range(beginIndex, len(tasks)):
             if tasks[i].startTime <= startTime:
@@ -315,15 +316,19 @@ def scheduleTask(tasks, free_rate):
         nowTask.sc_startTime = startTime
         nowTask.sc_endTime = nowTask.sc_startTime + nowTask.runTime
         nowTask.sc_freeEndTime = runTime2freeTime(nowTask.runTime, free_rate) + nowTask.sc_endTime
+        #print("nowTask:", nowTask.sc_startTime, nowTask.runTime, nowTask.sc_endTime, nowTask.sc_freeEndTime)
         if nowTask.sc_endTime > nowTask.endTime:
             if free_rate != 0 and nowTask.id != -1:#id为-1则为午睡，午睡不要影响调度
                 return False
             else :
                 #如果实在不满足，则调度截止时间仍为结束时间
+                #print("dayu", nowTask.sc_endTime, nowTask.endTime, free_rate)
                 nowTask.sc_endTime = nowTask.endTime
                 nowTask.sc_freeEndTime = nowTask.endTime
         scheduledTasks.append(nowTask)
         startTime = nowTask.sc_freeEndTime
+    # for task in scheduledTasks:
+    #     print("task is", task.sc_startTime, task.sc_endTime)
     lens = len(canBeginTasks)
     for i in range(lens):
         nowTask = canBeginTasks.pop(0)
@@ -338,6 +343,8 @@ def scheduleTask(tasks, free_rate):
                 nowTask.sc_freeEndTime = nowTask.endTime
         scheduledTasks.append(nowTask)
         startTime = nowTask.sc_freeEndTime
+    # for task in scheduledTasks:
+    #     print("task is", task.sc_startTime, task.sc_endTime)
     return scheduledTasks
 
 def sortTaskInEDF(self:Mytask, other:Mytask):

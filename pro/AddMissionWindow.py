@@ -10,7 +10,6 @@ from PyQt5.QtGui import *
 from DateLabel import DateLabel
 from MainWindow.customItem import CustomListWidgetItem
 from addDialog import AddDialog
-from inputDialog import InputDialog
 from mytask import Mytask
 from PerpetualCalendar import *
 import datetime
