@@ -3,6 +3,10 @@ from PyQt5.QtCore import QTimer, QDateTime
 
 import sys
 import re
+
+from pyqt5_plugins.examplebutton import QtWidgets
+from pyqt5_plugins.examplebuttonplugin import QtGui
+
 import DateTime
 import PerpetualCalendar
 import untitled
@@ -12,7 +16,7 @@ from addDialog import AddDialog
 from mytask import Mytask
 
 DAYS = 7 #过去7天
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QFileDialog
 from PyQt5.QtCore import QTimer
 import sys, time
 
@@ -43,13 +47,13 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         #进行信号与槽的链接按钮
         self.pushButton.clicked.connect(self.display_page1)
         self.pushButton_2.clicked.connect(self.display_page2)
-        self.pushButton_3.clicked.connect(self.display_page3)
         self.pushButton_4.clicked.connect(self.display_page4)
-        # self.pushButton_5.clicked.connect(self.display_page5)
+        self.pushButton_5.clicked.connect(self.display_page5)
         self.label_11.setText("2022-07-30 16:55:40 星期日")
         self.timer = QTimer()
         self.timer.timeout.connect(self.showtime)  # 这个通过调用槽函数来刷新时间
         self.timer.start(1000)  # 每隔一秒刷新一次，这里设置为1000ms
+        self.timer.timeout.connect(self.showSide)
         self.lineEdit.setPlaceholderText("添加任务，按回车创建")
         self.lineEdit.returnPressed.connect(self.addAssignment)
 
@@ -75,6 +79,26 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.importance.currentIndexChanged.connect(self.update_taskImportance)#update importance
         self.content.textChanged.connect(self.update_taskContent) #content
         self.showingTask = None
+
+        #
+        self.calendarVerticalLayout = QtWidgets.QVBoxLayout()
+        self.page_5.setLayout(self.calendarVerticalLayout)
+        self.calendarVerticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.calendarVerticalLayout.setSpacing(0)
+
+        #编辑头像
+        self.pushButton_3.clicked.connect(self.uploadImg)
+
+    def uploadImg(self):
+        self.imageName, imgType = QFileDialog.getOpenFileName(self, "选择头像", "", "*.jpg;;*.png;;All Files(*)")
+        self.label_6.setPixmap(QtGui.QPixmap(self.imageName))
+
+    def showSide(self):
+        h = datetime.datetime.now().hour
+        if h > 18 or h < 6:
+            self.label_24.setPixmap(QtGui.QPixmap("../res/side2.png"))
+        else:
+            self.label_24.setPixmap(QtGui.QPixmap("../res/side.png"))
 
     def update_taskName(self):
         self.showingTask.updateTask("taskName", self.title.text())
@@ -150,6 +174,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         """
         self.INPUT = AddDialog()#新建一个对话框窗口，新建任务
         self.INPUT.setTitleAuto(self.lineEdit.text())
+        self.lineEdit.clear()
         self.INPUT.setUserName(self.userName)
         self.INPUT.exec_()
 
@@ -174,17 +199,14 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def display_page2(self):
         self.stackedWidget.setCurrentIndex(1)
 
-    def display_page3(self):
-        self.stackedWidget.setCurrentIndex(2)
-
     def display_page4(self):
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(2)
         self.printLine()
         self.printCircle()
         self.printBar()
 
     def display_page5(self):
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(3)
 
     def setUser(self, username):
         self.userName = username
@@ -228,6 +250,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def getData3(self):
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         dic = {"运动":0, "学习":0, "娱乐":0, "生活":0}
+        if tasks is None or tasks == []:
+            return [0, 0, 0, 0]
         for task in tasks:
             #一个任务的开始时间在foredate之后，在nowdate之前，即算进来
                 dic[task.taskType] += 1
@@ -247,11 +271,14 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
     def getData2(self):
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         dic = {"已完成":0, "未完成":0}
+        if tasks is None or tasks == []:
+            return np.array([0,1])
         for task in tasks:
             if task.duration <= 0:
                 dic["已完成"] += 1
             else :
                 dic["未完成"] += 1
+
         data = np.array([dic["已完成"], dic["未完成"]])
         return data
 
@@ -276,6 +303,8 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         xdate = [startdate + i * timedelta for i in range(DAYS)]
         tasks = Mytask.getTasksForDate(self.userName, timeSpan)
         ydata = [0 for i in range(timeSpan)]
+        if tasks is None or tasks == []:
+            return xdate, ydata
         for task in tasks:
             deadline = task.deadline.split(" ")[0]
             deaddate = datetime.datetime.strptime(deadline, "%Y-%m-%d")
