@@ -380,6 +380,30 @@ class Ui_MainWindow(object):
         self.label_24.setPixmap(QtGui.QPixmap("../res/side.png"))
         self.label_24.setScaledContents(True)
         self.label_24.setObjectName("label_24")
+        self.temp = QtWidgets.QLabel(self.frame_12)
+        self.temp.setGeometry(QtCore.QRect(0, 10, 111, 171))
+        self.temp.setStyleSheet("background-color:transparent;\n"
+"font-size:80px;\n"
+"color:white;\n"
+"")
+        self.temp.setTextFormat(QtCore.Qt.PlainText)
+        self.temp.setScaledContents(True)
+        self.temp.setObjectName("temp")
+        self.wind = QtWidgets.QLabel(self.frame_12)
+        self.wind.setGeometry(QtCore.QRect(0, 130, 111, 21))
+        self.wind.setStyleSheet("background-color:transparent;\n"
+"font-size:20px;\n"
+"color:white;\n"
+"font-family:微软雅黑;")
+        self.wind.setObjectName("wind")
+        self.local = QtWidgets.QLabel(self.frame_12)
+        self.local.setGeometry(QtCore.QRect(0, 170, 111, 21))
+        self.local.setStyleSheet("background-color:transparent;\n"
+"font-size:20px;\n"
+"color:white;\n"
+"font-family:微软雅黑;\n"
+"border:none")
+        self.local.setObjectName("local")
         self.verticalLayout_2.addWidget(self.frame_12)
         self.horizontalLayout_3.addLayout(self.verticalLayout_2)
         self.horizontalLayout.addWidget(self.frame)
@@ -839,6 +863,9 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "日程安排"))
         self.pushButton_4.setText(_translate("MainWindow", "历史数据"))
         self.pushButton_5.setText(_translate("MainWindow", "更多功能"))
+        self.temp.setText(_translate("MainWindow", "28°"))
+        self.wind.setText(_translate("MainWindow", "←17km/h"))
+        self.local.setText(_translate("MainWindow", "wulumuqi"))
         self.lineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.pushButton_10.setText(_translate("MainWindow", "退出"))
         self.pushButton_11.setText(_translate("MainWindow", "删除"))

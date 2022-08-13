@@ -4,6 +4,8 @@ from PyQt5.QtCore import QTimer, QDateTime
 
 import sys
 import re
+import requests
+import subprocess
 
 from pyqt5_plugins.examplebutton import QtWidgets
 from pyqt5_plugins.examplebuttonplugin import QtGui
@@ -55,6 +57,9 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.timer.timeout.connect(self.showtime)  # 这个通过调用槽函数来刷新时间
         self.timer.start(1000)  # 每隔一秒刷新一次，这里设置为1000ms
         self.timer.timeout.connect(self.showSide)
+        self.timer2 = QTimer()
+        self.timer2.start(600000)
+        self.timer2.timeout.connect(self.showTemp)
         self.lineEdit.setPlaceholderText("添加任务，按回车创建")
         self.lineEdit.returnPressed.connect(self.addAssignment)
 
@@ -89,6 +94,17 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
         #编辑头像
         self.pushButton_3.clicked.connect(self.uploadImg)
+        self.showTemp()
+
+    def showTemp(self):
+        result = subprocess.check_output("curl wttr.in/?format=%t+%l+%w", shell=True, encoding="utf-8")
+        l = list(map(str, result.split()))
+        temp = l[0][1:-1]
+        local = l[1][:-1]
+        wind = l[3]
+        self.temp.setText(temp)
+        self.local.setText(local)
+        self.wind.setText(wind)
 
     def uploadImg(self):
         self.imageName, imgType = QFileDialog.getOpenFileName(self, "选择头像", "", "*.jpg;;*.png;;All Files(*)")

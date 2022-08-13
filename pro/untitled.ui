@@ -694,6 +694,70 @@ QPushButton:pressed{
                  <bool>true</bool>
                 </property>
                </widget>
+               <widget class="QLabel" name="temp">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>10</y>
+                  <width>111</width>
+                  <height>171</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:transparent;
+font-size:80px;
+color:white;
+</string>
+                </property>
+                <property name="text">
+                 <string>28°</string>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::PlainText</enum>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QLabel" name="wind">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>130</y>
+                  <width>111</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:transparent;
+font-size:20px;
+color:white;
+font-family:微软雅黑;</string>
+                </property>
+                <property name="text">
+                 <string>←17km/h</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="local">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>170</y>
+                  <width>111</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:transparent;
+font-size:20px;
+color:white;
+font-family:微软雅黑;
+border:none</string>
+                </property>
+                <property name="text">
+                 <string>wulumuqi</string>
+                </property>
+               </widget>
               </widget>
              </item>
             </layout>
