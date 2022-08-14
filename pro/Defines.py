@@ -23,11 +23,11 @@ GREGORIAN_WEEKDAY = ['一', '二', '三', '四', '五', '六', '日']
 MAX_DAYSinMONTH_TABLE = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 dateInfo = [[]] * 42
 selected = None
-setYear = ''
+currentYear = ''
 startCentury = -13
 endCentury = 30
 start_century = startCentury if startCentury <= 0 else startCentury - 1
-LABEL_SIZE=11
+LABEL_SIZE=13
 
 def yearChangeToAD(year): # 给定年份年转公元纪年
 	if year == 0:
