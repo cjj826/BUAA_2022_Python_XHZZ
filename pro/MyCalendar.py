@@ -10,7 +10,7 @@ from CalendarCell import CalendarCell
 from ComboBox import ComboBox
 from Defines import *
 from DateLabel import DateLabel
-from PerpetualCalendar import displayDate, yearItems, jumpYear, jumpMonth, lastMonth, nextMonth, lastYear, nextYear
+from PerpetualCalendar import displayDate, updateYearItems, jumpYear, jumpMonth, lastMonth, nextMonth, lastYear, nextYear
 
 
 class MyCalendar(QWidget):
@@ -55,7 +55,7 @@ class MyCalendar(QWidget):
             elif i == 0: continue
             else:
                 self.comboBoxCentury.addItem(str(i) + '世纪')
-        self.comboBoxCentury.currentIndexChanged.connect(lambda : yearItems(self))
+        self.comboBoxCentury.currentIndexChanged.connect(lambda : updateYearItems(self))
         self.comboBoxCentury.activated.connect(lambda : displayDate(self))
         self.hlayWNL.addWidget(self.comboBoxCentury)
 
