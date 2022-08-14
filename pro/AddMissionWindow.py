@@ -129,6 +129,7 @@ class AddMissionWindow(QWidget):
                 item.state.setText(" 未开始")
             else:
                 item.state.setText("已过期")
+        item.state.setText("")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
