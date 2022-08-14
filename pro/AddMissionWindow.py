@@ -86,30 +86,30 @@ class AddMissionWindow(QWidget):
 
         for i, task in enumerate(tasksNeed):
             if i == 0:
-                item = CustomListWidgetItem(task, self, mode=0, firstItem=True)
+                item = CustomListWidgetItem(task, self, mode=0, firstItem=True, specialWindow=self.mainWindow)
             else:
-                item = CustomListWidgetItem(task, self, mode=0, firstItem=False)
+                item = CustomListWidgetItem(task, self, mode=0, firstItem=False, specialWindow=self.mainWindow)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
-            item.widget.disconnect()
-            item.widget.clicked.connect(lambda : self.mainWindow.showSider(item.task))
+            # item.widget.disconnect()
+            # item.widget.clicked.connect(lambda : self.mainWindow.showSider(item.task))
             self.setTaskState(item, mode=0)
             # item.widget.clicked.connect(lambda : )
 
         for task in tasksFinished:
-            item = CustomListWidgetItem(task, self, mode=1)
+            item = CustomListWidgetItem(task, self, mode=1, specialWindow=self.mainWindow)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
-            item.widget.disconnect()
-            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
+            # item.widget.disconnect()
+            # item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
             self.setTaskState(item, mode=1)
 
         for task in tasksOvertime:
-            item = CustomListWidgetItem(task, self, mode=2)
+            item = CustomListWidgetItem(task, self, mode=2, specialWindow=self.mainWindow)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
-            item.widget.disconnect()
-            item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
+            # item.widget.disconnect()
+            # item.widget.clicked.connect(lambda: self.mainWindow.showSider(item.task))
             self.setTaskState(item, mode=2)
 
     def setTaskState(self, item, mode = 0):

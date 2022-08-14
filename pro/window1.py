@@ -67,6 +67,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
 
         self.pushButton_10.clicked.connect(self.hideSider)
         self.pushButton_11.clicked.connect(self.deleteTask)
+        self.pushButton_11.clicked.connect(lambda: PerpetualCalendar.displayMonth(self.calendar))
         #侧边栏
         self.start.setDisplayFormat('yyyy-MM-dd HH:mm')
         self.end.setDisplayFormat('yyyy-MM-dd HH:mm')
