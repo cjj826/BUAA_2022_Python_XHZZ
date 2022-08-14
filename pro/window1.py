@@ -172,7 +172,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         """
         self.widget.hide()
         if self.showingTask is not None:
-            self.showingTask.updateSql()
+            self.showingTask.updateSql(mode=1)
         self.updateListWidget()
 
 
@@ -233,15 +233,30 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         for i in range(count):
             item = self.listWidget.takeItem(0)
             del item
-
-        for i, task in enumerate(tasksNeed):
-            if i == 0:
+        overtimetmp = []
+        finishedtmp = []
+        tmp = str(datetime.datetime.now().time()).split(":")
+        time = int(tmp[0]) * 60 + int(tmp[1])
+        today = str(datetime.datetime.now().strftime("%Y-%m-%d"))
+        first = True
+        for task in tasksNeed:
+            if task.sc_endTime < time :
+                if not isRepeated(task.id, tasksOvertime):
+                    overtimetmp.append(task)
+                continue
+            if task.finishToday == today or task.duration == 0:
+                if not isRepeated(task.id, tasksFinished):
+                    finishedtmp.append(task)
+                continue
+            if first:
                 item = CustomListWidgetItem(task, self, mode=0, firstItem=True)
-            else :
-                item = CustomListWidgetItem(task, self, mode=0, firstItem=False)
+                first = False
+            else:
+                item = CustomListWidgetItem(task, self, mode=0)
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item,item.widget)
 
+        tasksFinished += finishedtmp
         if len(tasksFinished) != 0:
             item = CustomListWidgetItem(None, self, mode=1, firstItem=True)
             self.listWidget.addItem(item)
@@ -251,6 +266,7 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
             self.listWidget.addItem(item)
             self.listWidget.setItemWidget(item, item.widget)
 
+        tasksOvertime += overtimetmp
         if len(tasksOvertime) != 0:
             item = CustomListWidgetItem(None, self, mode=2, firstItem=True)
             self.listWidget.addItem(item)
@@ -358,7 +374,11 @@ class masterWindow(untitled.Ui_MainWindow, QMainWindow):
         self.LineFigure.ax.grid(axis='y', color='lightgray', linestyle='-', linewidth=0.5)
         self.LineFigure.ax.legend(loc='best', fontsize=12, frameon=False, ncol=1)
 
-
+def isRepeated(id, list):
+    for task in list:
+        if task.id == id:
+            return True
+    return False
 timeSpan = 7
 if __name__ == '__main__':
     app = QApplication(sys.argv)

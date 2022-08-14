@@ -7,6 +7,8 @@ from mysql.MySql import MySql
 
 class Mytask:
     reserve_freeTime = 0
+    cached_tasks = []
+    isCached = False
     def __init__(self, userName, taskName, taskType, startline:str,
                  deadline:str, duration:int, importance, content, id = None, finishToday = "False"):
         #创建任务时指定
@@ -36,7 +38,7 @@ class Mytask:
         #任务是否过期、完成
         #任务是否总的完成了， 看duration是否为0即可
         self.finishToday = finishToday#今天的任务是否完成
-
+        self.isupdateTime = False
     #任务完成
     def setFinished(self, mode = 0):#0为任务正常完成，2为任务过期后完成
         if mode == 0:
@@ -53,6 +55,7 @@ class Mytask:
         else :
             self.duration = 0
         self.updateSql()
+        Mytask.isCached = True
 
     def updateTask(self, typeName, text):
         if typeName == "taskName":
@@ -60,17 +63,27 @@ class Mytask:
         elif typeName == "taskType":
             self.taskType = text
         elif typeName == "startline":
+            if text != self.startline:
+                print("hehehe")
+                self.isupdateTime = True
             self.startline = text
         elif typeName == "duration":
+            if text != self.duration:
+                self.isupdateTime = True
             self.duration = text
         elif typeName == "content":
             self.content = text
         elif typeName == "deadline":
+            if text != self.deadline:
+                self.isupdateTime = True
             self.deadline = text
         elif typeName == "importance":
             self.importance = text
 
-    def updateSql(self):
+    def updateSql(self, mode=0):
+        if mode == 1 and self.isupdateTime:
+            Mytask.isCached = False
+            self.isupdateTime = False
         print("updateHas")
         mysql = MySql()
         dic = {'taskName': self.taskName, 'content': self.content, 'startline': self.startline,
@@ -80,6 +93,7 @@ class Mytask:
         mysql.closeDataBase()
 
     def delete(self):
+        Mytask.isCached = False
         mysql = MySql()
         mysql.delete("user_" + self.userName, {"id": self.id})
         mysql.closeDataBase()
@@ -177,8 +191,8 @@ class Mytask:
         tasksNeed.sort(key=functools.cmp_to_key(sortTaskInStartTime))
         # tasksFinished.sort(key=functools.cmp_to_key(sortTaskInDeadline))
         tasksOvertime.sort(key=functools.cmp_to_key(sortTaskInDeadline))
-        # if len(tasksNeed) != 0:
-        #     tasksNeed = autoSchedule(tasksNeed)
+        if len(tasksNeed) != 0:
+            tasksNeed = autoSchedule(tasksNeed)
         tasksNeed.remove(tmp)
         return tasksNeed, tasksFinished, tasksOvertime
 
@@ -246,11 +260,25 @@ class Mytask:
         # for task in tasksNeed:
         #     print(task.taskName, end="")
         # print()
+        if Mytask.isCached:
+            tasksNeed = Mytask.cached_tasks
+        else :
+            print("hello")
+            Mytask.cached_tasks = tasksNeed
+            Mytask.isCached = True
+        # if Mytask.cached_tasks == []:
+        #     Mytask.cached_tasks = tasksNeed
+        # else :
+        #     for task in Mytask.cached_tasks:
+        #         print("cached task", task.taskName)
+        # print("tasksNeed is", len(tasksNeed))
+        # print("cached taskLen is", len(Mytask.cached_tasks))
         return tasksNeed, tasksFinished, tasksOvertime
 
     def save(self):
         """将任务保存到数据库
         """
+        Mytask.isCached = False
         mysql = MySql()
         dic = {'taskName': self.taskName, 'content': self.content, 'startline':self.startline,
                'deadline': self.deadline, 'duration':str(int(self.duration)), 'taskType':self.taskType,

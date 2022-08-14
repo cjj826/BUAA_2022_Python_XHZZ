@@ -94,6 +94,21 @@ class CustomListWidgetItem(QListWidgetItem):
             return
         self.widget.clicked.connect(self.showSideBar)
         self.checkBox.stateChanged.connect(self.changeState)
+    # @staticmethod
+    # def restore():
+    #     CustomListWidgetItem.needFirstItem = True
+    #
+    # def cached_select(self, task:Mytask, mode):
+    #     if task is None:
+    #         return mode
+    #     if mode == 1:
+    #         return 1
+    #     tmp = str(datetime.now().time()).split(":")
+    #     time = int(tmp[0]) * 60 + int(tmp[1])
+    #     if task.sc_endTime <= time:
+    #         return 2
+    #     else:
+    #         return 0
 
     def changeState(self):
         if self.checkBox.isChecked():#以前可能是过期或者未开始或者正在进行
