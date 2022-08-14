@@ -10,7 +10,7 @@ from mytask import Mytask
 class CustomListWidgetItem(QListWidgetItem):
     count = 0
     clicked = pyqtSignal()
-    def __init__(self, task : Mytask, window, mode = 0, firstItem = False):#0 is taskNeed, 1 is finished, 2 is overtime
+    def __init__(self, task : Mytask, window, mode = 0, firstItem = False, specialWindow=None):#0 is taskNeed, 1 is finished, 2 is overtime
         """创建任务列表项
 
         :param task: 任务
@@ -18,7 +18,10 @@ class CustomListWidgetItem(QListWidgetItem):
         :param firstItem: 对于mode == 0来说，第一个任务将canStart赋值为True
         """
         super(CustomListWidgetItem, self).__init__()
-        self.window = window
+        if specialWindow == None:
+            self.window = window
+        else:
+            self.window = specialWindow
         self.widget = MyQwidget()
         self.widget.setObjectName("customwidget" + str(self.count))
         self.count += 1
